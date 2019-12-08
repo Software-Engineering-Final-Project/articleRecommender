@@ -1,25 +1,24 @@
 import React, { Component } from "react"
+import Login from '../Components/login'
 import './home.css'
-
+import logo from '../Images/Logo.PNG'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 class Home extends Component {
 
     constructor() {
         super()
         this.state = {
-            name: "",
-            inputField: ""
+            username: "",
+            password: "",
+            hasError: false
         }
+        this.githubIcon = <FontAwesomeIcon icon={['fab', 'github']} />
 
-        this.handleClick = this.handleClick.bind(this)
         this.handleChange = this.handleChange.bind(this)
-    }
-
-    handleClick(event) {
-        this.setState({name: this.state.inputField})
+        this.formSubmitted = this.formSubmitted.bind(this)
     }
 
     handleChange(event) {
-
         console.log(event)
         const name = event.target.name
         const value = event.target.value
@@ -28,19 +27,36 @@ class Home extends Component {
         })
     }
 
+    formSubmitted(event){
+        event.preventDefault() // makes the page not refresh on every click
+
+        if(this.state.username !== "" && this.state.password !== ""){
+            console.log('ready to continue')
+        } else {
+            this.setState({ hasError: true})
+        }
+    }
+
     render() {
         return (
-                <div className="fullscreen">
-                    <div className="row justify-content-center" style={{backgroundColor:"red"}}>
-                        <h1>Hello {this.state.name}, Welcome to the home page</h1>
-                    </div>
-                    <div className="row justify-content-center">
-                        <input type="text" value={this.state.inputField} onChange={this.handleChange}  name="inputField" placeholder="Type Here" className="form-control text-center" style={{width: "200px"}}/>
-                    </div>
-                    <div className="row justify-content-center">
-                        <button className="btn btn-primary"onClick={this.handleClick}>Press me!</button>
-                    </div>
+
+            <div className='login-header'>
+            <div className='d-flex justify-content-end m-1'>
+                    <a style={{color: '#60b0f4'}} href='https://github.com/jschappel/ABC-Corp'> Check me out on Github! {this.githubIcon}</a>
                 </div>
+            <div className='d-flex justify-content-center'>
+                <img src={logo} className="img-fluid" alt="Responsive"/>
+            </div>
+            <div className="row justify-content-center">
+                <Login
+                    onSubmit = {this.formSubmitted}
+                    usernameValue = {this.state.username}
+                    passwordValue = {this.state.password}
+                    message = {this.state.hasError}
+                    onChange={this.handleChange}
+                />
+            </div> 
+            </div>
         )
     }
 }
