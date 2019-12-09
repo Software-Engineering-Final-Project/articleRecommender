@@ -2,10 +2,10 @@ import React, { Component } from "react"
 
 /**
  * This component is for the login container. It requires the following props:
- *      1) usernameValue: The current value in the user input field
- *      2) passwordValue: The current value in the password field
- *      3) message: boolean to determine if the form is submitted before finished
- *      3) onSubmit: A function that handles the form submission
+ *      1) usernameValue {String}: The current value in the user input field
+ *      2) passwordValue {String}: The current value in the password field
+ *      3) message {boolean}: boolean to determine if the form was submitted before finished
+ *      3) onSubmit {function}: A function that handles the form submission
  * Also note that This props inherits the onChange function from its parent div
  */
 class Login extends Component {
@@ -14,6 +14,7 @@ class Login extends Component {
         super(props)
     }
 
+    // Renders the error msg if the form is submitted before all the input fields are filled out
     renderMessage() {
         if(this.props.message){
             return <p style={{'fontSize': '12px', 'color': 'red'}}>Please fill in both username and password fields.</p>

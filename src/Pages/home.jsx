@@ -42,7 +42,7 @@ class Home extends Component {
 
             <div className='login-header'>
             <div className='d-flex justify-content-end m-1'>
-                    <a style={{color: '#60b0f4'}} href='https://github.com/jschappel/ABC-Corp'> Check me out on Github! {this.githubIcon}</a>
+                    <a style={{color: '#60b0f4'}} href='https://github.com/Software-Engineering-Final-Project/articleRecommender'> Check me out on Github! {this.githubIcon}</a>
                 </div>
             <div className='d-flex justify-content-center'>
                 <img src={logo} className="img-fluid" alt="Responsive"/>
