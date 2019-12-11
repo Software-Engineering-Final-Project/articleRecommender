@@ -13,3 +13,7 @@
     justify-content: center;
     /*font-size: calc(1px + 1.3vmin); */
   }
+
+#loginInput {
+  min-width: 350px;
+}

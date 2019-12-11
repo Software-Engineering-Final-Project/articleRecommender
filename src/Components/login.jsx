@@ -14,46 +14,50 @@ class Login extends Component {
         super(props)
     }
 
-    // Renders the error msg if the form is submitted before all the input fields are filled out
+    // Renders a message if any errors have ocurred
     renderMessage() {
-        if(this.props.message){
-            return <p style={{'fontSize': '12px', 'color': 'red'}}>Please fill in both username and password fields.</p>
-        } else{
-            return <p></p>
-        }
+        return <p style={{'color':'red'}}>{this.props.message}</p>
     }
 
     render(){
         return(
-            <form className='needs-validation' onSubmit={this.props.onSubmit} noValidate>
+            <div>
+                <div className='row justify-content-center'>
+                <form className=' needs-validation' onSubmit={this.props.onSubmit} noValidate>
+                    <div className='form-group'>
+                        <label>Email Address</label>
+                        <input 
+                            type='username' 
+                            name='username' 
+                            value= {this.props.usernameValue}
+                            onChange={this.props.onChange}
+                            className='form-control input-sm'
+                            id="loginInput" 
+                            placeholder="example@shu.edu" />
+                        <small className='form-text text-muted'>We'll never share your email with anyone else.</small>
+                    </div>
+                    <div className='form-group'>
+                        <label>Password</label>
+                        <input 
+                            type='password' 
+                            name='password'
+                            value={this.props.passwordValue}
+                            onChange={this.props.onChange}
+                            className='form-control'
+                            id="loginInput" 
+                            placeholder='password'/>
+                    </div>
+                    <div className='d-flex justify-content-center'>
+                        <button type='Log in' className='btn btn-secondary'>Submit</button>
+                    </div>
+                </form>
+                </div>
+            <div className='row justify-content-center mt-2'>
                 <div className='form-group'>
-                    <label>Email Address</label>
-                    <input 
-                        type='username' 
-                        name='username' 
-                        value= {this.props.usernameValue}
-                        onChange={this.props.onChange}
-                        className='form-control input-sm' 
-                        placeholder="example@shu.edu" />
-                    <small className='form-text text-muted'>We'll never share your email with anyone else.</small>
+                        {this.renderMessage()}
                 </div>
-                <div className='form-group'>
-                    <label>Password</label>
-                    <input 
-                        type='password' 
-                        name='password'
-                        value={this.props.passwordValue}
-                        onChange={this.props.onChange}
-                        className='form-control' 
-                        placeholder='password'/>
-                </div>
-                <div className='form-group'>
-                    {this.renderMessage()}
-                </div>
-                <div className='d-flex justify-content-center'>
-                    <button type='Log in' className='btn btn-secondary'>Submit</button>
-                </div>
-            </form>
+            </div>
+            </div>
         )
     }
 }
