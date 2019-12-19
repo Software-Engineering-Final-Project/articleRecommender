@@ -7,7 +7,7 @@ This project is looking to complete the following:
 - [ ] Have a view that allows a user the make a search
 - [ ] Have a view that displays the searched requests
 - [ ] Have an adv. search option
-- [ ] allow user to decide if they would like to save or see more of a specified artile type
+- [ ] Allow user to decide if they would like to save or see more of a specified article type
 
 
 # How to setup
