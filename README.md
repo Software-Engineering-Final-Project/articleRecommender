@@ -1,3 +1,17 @@
+# Project overview
+
+This project is the front-end application for our final project. Its main purpose is the give the user a clean GUI so that they can easily login and search for articles.
+
+This project is looking to complete the following:
+- [x] Have a login screen 
+- [ ] Have a view that allows a user the make a search
+- [ ] Have a view that displays the searched requests
+- [ ] Have an adv. search option
+- [ ] allow user to decide if they would like to save or see more of a specified artile type
+
+
+# How to setup
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
