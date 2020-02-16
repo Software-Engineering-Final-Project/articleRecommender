@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Home from "./Pages/home"
+import AccountCreationPage from './Pages/account_creation'
 import SearchPage from "./Pages/search"
 import PageNotFound from "./Pages/PageNotFound"
 import ProtectedRoute from './Components/protectedRoute'
@@ -43,6 +44,7 @@ class App extends Component {
       <BrowserRouter>
         <Switch>
           <Route exact path='/' render={ (props) => <Home {...props} handler={this.updateStateLogin}/> } />
+          <Route path='/createAccount' component={AccountCreationPage} />
           <ProtectedRoute path='/search' component={SearchPage} state={this.state} />
           <Route component={PageNotFound}/>
         </Switch>

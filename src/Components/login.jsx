@@ -48,7 +48,7 @@ class Login extends Component {
                             placeholder='password'/>
                     </div>
                     <div className='d-flex justify-content-center'>
-                        <button type='Log in' className='btn btn-secondary'>Submit</button>
+                        <button type='Log in' className='btn btn-secondary'>Sign in</button>
                     </div>
                 </form>
                 </div>
