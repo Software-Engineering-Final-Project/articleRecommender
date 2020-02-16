@@ -102,14 +102,11 @@ class Home extends Component {
 
     render() {
         return (
-            <div className='login-header'>
-                <div className='d-flex justify-content-end m-1'>
-                        <a style={{color: '#60b0f4'}} href='https://github.com/Software-Engineering-Final-Project/articleRecommender'> Check me out on Github! {this.githubIcon}</a>
-                    </div>
+            <div className='container-fluid'>
                 <div className='d-flex justify-content-center'>
                     <img src={logo} className="img-fluid" alt="Responsive"/>
                 </div>
-                <div className="row justify-content-center">
+                <div className="flex-row justify-content-center"> 
                     <Login
                         onSubmit = {this.formSubmitted}
                         usernameValue = {this.state.username}
@@ -118,7 +115,7 @@ class Home extends Component {
                         onChange={this.handleChange}
                     />
                 </div>
-                <div className='row justify-content-center' style={{'marginTop':'-30px'}}>
+                <div className='flex-row justify-content-center' style={{'marginTop':'-30px'}}>
                     <hr style={{'width':'15%', 'backgroundColor':'#86939d'}}/>
                 </div>
                 <div className='row justify-content-center m-3'>
