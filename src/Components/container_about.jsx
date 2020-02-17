@@ -1,7 +1,8 @@
 import React from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import BabyYoda from '../Images/BabyYoda.jpg'
-
+import YodaCup from '../Images/yodacup.jpeg'
+import Thor from '../Images/thor.jpg'
 
 function AboutContainer() {
 
@@ -23,7 +24,7 @@ function AboutContainer() {
             <h3>About the Team</h3>
                 <p className="ml-2">Feel free to check us out the project <GithubLink/>, or contact our staff below:</p>
                 <div className='row justify-content-center'>
-                    <div className='col-sm-3 m-2'>
+                    <div className='col-md-3 m-2'>
                         <StaffInfoCard
                             image ={BabyYoda}
                             full_name = "Joshua Schappel"
@@ -32,16 +33,9 @@ function AboutContainer() {
                         />
                     </div>
 
-                    <div className='col-sm-3 m-2'>
-                        <StaffInfoCard
-                            image ={BabyYoda}
-                            full_name = "Sachin Mahashabde"
-                            bio = "A man who truly believes in the super powers of recursion"
-                            link ="https://github.com/jschappel"
-                        />
-                    </div>
+                    
 
-                    <div className='col-sm-3 m-2'>
+                    <div className='col-md-3 m-2'>
                         <StaffInfoCard
                             image ={BabyYoda}
                             full_name = "Jonathan Bar Eli"
@@ -50,16 +44,16 @@ function AboutContainer() {
                         />
                     </div>
 
-                    <div className='col-sm-3 m-2'>
+                    <div className='col-md-3 m-2'>
                         <StaffInfoCard
-                            image ={BabyYoda}
+                            image ={YodaCup}
                             full_name = "Jeremy Suero"
                             bio = "A Seton Hall student who is interested in writing clean and efficient code."
                             link ="https://github.com/jschappel"
                         />
                     </div>
 
-                    <div className='col-sm-3 m-2'>
+                    <div className='col-md-3 m-2'>
                         <StaffInfoCard
                             image ={BabyYoda}
                             full_name = "Melk Daly"
@@ -68,6 +62,15 @@ function AboutContainer() {
                         />
                     </div>
                     
+                    <div className='col-md-3 m-2'>
+                        <StaffInfoCard
+                            image ={Thor}
+                            full_name = "Sachin Mahashabde"
+                            bio = "A man who truly believes in the super powers of recursion"
+                            link ="https://github.com/jschappel"
+                        />
+                    </div>
+
                 </div>
                 
                 
