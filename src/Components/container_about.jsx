@@ -21,7 +21,7 @@ function AboutContainer() {
             </div>
             <div className='flex-row mt-2'>
             <h3>About the Team</h3>
-                <p className="ml-2">Feel free to check us out on <GithubLink/>, or contact our staff below:</p>
+                <p className="ml-2">Feel free to check us out the project <GithubLink/>, or contact our staff below:</p>
                 <div className='row justify-content-center'>
                     <div className='col-sm-3 m-2'>
                         <StaffInfoCard
@@ -35,7 +35,16 @@ function AboutContainer() {
                     <div className='col-sm-3 m-2'>
                         <StaffInfoCard
                             image ={BabyYoda}
-                            full_name = "Joshua Schappel"
+                            full_name = "Sachin Mahashabde"
+                            bio = "A man who truly believes in the super powers of recursion"
+                            link ="https://github.com/jschappel"
+                        />
+                    </div>
+
+                    <div className='col-sm-3 m-2'>
+                        <StaffInfoCard
+                            image ={BabyYoda}
+                            full_name = "Jonathan Bar Eli"
                             bio = "A Seton Hall student who is interested in writing clean and efficient code."
                             link ="https://github.com/jschappel"
                         />
@@ -44,7 +53,7 @@ function AboutContainer() {
                     <div className='col-sm-3 m-2'>
                         <StaffInfoCard
                             image ={BabyYoda}
-                            full_name = "Joshua Schappel"
+                            full_name = "Jeremy Suero"
                             bio = "A Seton Hall student who is interested in writing clean and efficient code."
                             link ="https://github.com/jschappel"
                         />
@@ -53,16 +62,7 @@ function AboutContainer() {
                     <div className='col-sm-3 m-2'>
                         <StaffInfoCard
                             image ={BabyYoda}
-                            full_name = "Joshua Schappel"
-                            bio = "A Seton Hall student who is interested in writing clean and efficient code."
-                            link ="https://github.com/jschappel"
-                        />
-                    </div>
-
-                    <div className='col-sm-3 m-2'>
-                        <StaffInfoCard
-                            image ={BabyYoda}
-                            full_name = "Joshua Schappel"
+                            full_name = "Melk Daly"
                             bio = "A Seton Hall student who is interested in writing clean and efficient code."
                             link ="https://github.com/jschappel"
                         />
