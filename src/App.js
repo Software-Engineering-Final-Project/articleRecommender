@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Home from "./Pages/home"
 import AccountCreationPage from './Pages/account_creation'
 import SearchPage from "./Pages/search"
+import AboutPage from './Pages/about'
 import PageNotFound from "./Pages/PageNotFound"
 import ProtectedRoute from './Components/protectedRoute'
 
@@ -45,6 +46,7 @@ class App extends Component {
         <Switch>
           <Route exact path='/' render={ (props) => <Home {...props} handler={this.updateStateLogin}/> } />
           <Route path='/createAccount' component={AccountCreationPage} />
+          <Route path='/about' component={AboutPage} />
           <ProtectedRoute path='/search' component={SearchPage} state={this.state} />
           <Route component={PageNotFound}/>
         </Switch>

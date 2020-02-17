@@ -1,7 +1,8 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export default function informationContact_footer() {
+export default function Footer() {
     const githubIcon = <FontAwesomeIcon icon={['fab', 'github']} />
     return(
         <div className='container-fluid'  style={{'position': 'fixed', 'bottom':'10px'}}>
@@ -10,7 +11,7 @@ export default function informationContact_footer() {
             </div>
             <div className='row ml-4 mb-1'>
                 <div className='col'>
-                    <button type="button" class="btn btn-outline-dark">Need Information?</button>
+                    <RedirectButton />
                 </div>
                 <div className='flex-col justify-content-end'>
                     <a 
@@ -20,5 +21,13 @@ export default function informationContact_footer() {
                 </div>
             </div>
         </div>
+    )
+}
+    
+
+function RedirectButton() {
+    let history = useHistory()
+    return (
+        <button type="button" onClick={() => history.push('/about')} className="btn btn-outline-dark">Need Information?</button>
     )
 }

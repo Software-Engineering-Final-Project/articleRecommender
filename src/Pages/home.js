@@ -1,9 +1,8 @@
-import React, { Component } from "react"
-import './home.css'
-import Login from '../Components/login'
+import React, { Component, Fragment } from "react"
+import Login from '../Components/form_login'
 import logo from '../Images/Logo.PNG'
 import CreateAccountRedirect from '../Components/account_create_link'
-import InfoFooter from '../Components/footer_contact'
+import Footer from '../Components/footer_contact'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 class Home extends Component {
 
@@ -102,6 +101,7 @@ class Home extends Component {
 
     render() {
         return (
+            <Fragment>
             <div className='container-fluid'>
                 <div className='d-flex justify-content-center'>
                     <img src={logo} className="img-fluid" alt="Responsive"/>
@@ -123,8 +123,9 @@ class Home extends Component {
                         link = '/createAccount'
                     />
                 </div>
-                <InfoFooter />
             </div>
+            <Footer />
+            </Fragment>
         )
     }
 }
