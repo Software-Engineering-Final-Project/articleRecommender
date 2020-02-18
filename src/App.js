@@ -5,6 +5,7 @@ import AccountCreationPage from './Pages/account_creation'
 import SearchPage from "./Pages/search"
 import AboutPage from './Pages/about'
 import PageNotFound from "./Pages/PageNotFound"
+import SearchHomePage from './Pages/search_home'
 import ProtectedRoute from './Components/protectedRoute'
 
 /**
@@ -47,7 +48,7 @@ class App extends Component {
           <Route exact path='/' render={ (props) => <Home {...props} handler={this.updateStateLogin}/> } />
           <Route path='/createAccount' component={AccountCreationPage} />
           <Route path='/about' component={AboutPage} />
-          <ProtectedRoute path='/search' component={SearchPage} state={this.state} />
+          <ProtectedRoute path='/search' component={SearchHomePage} state={this.state} />
           <Route component={PageNotFound}/>
         </Switch>
       </BrowserRouter>
