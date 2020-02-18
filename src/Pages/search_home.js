@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import Navbar from '../Components/navbar'
+import BabyYoda from '../Images/BabyYoda.jpg'
 
 class HomeSearch extends Component {
 
@@ -6,11 +8,12 @@ class HomeSearch extends Component {
         super(props)
     }
 
-
-
     render() {
         return(
-            <h1>This is the search page</h1>
+            <Navbar
+                user="Joshua Schappel"
+                picture={BabyYoda}
+            />
         )
     }
 
