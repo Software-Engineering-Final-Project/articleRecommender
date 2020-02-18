@@ -2,6 +2,8 @@ import React from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import BabyYoda from '../Images/BabyYoda.jpg'
 import YodaCup from '../Images/yodacup.jpeg'
+import Yoda2 from '../Images/yoda2.jpg'
+import Yoda3 from '../Images/yoda3.jpeg'
 import Thor from '../Images/thor.jpg'
 
 function AboutContainer() {
@@ -23,8 +25,8 @@ function AboutContainer() {
             <div className='flex-row mt-2'>
             <h3>About the Team</h3>
                 <p className="ml-2">Feel free to check us out the project <GithubLink/>, or contact our staff below:</p>
-                <div className='row justify-content-center'>
-                    <div className='col-md-3 m-2'>
+                <div className='row d-flex justify-content-center'>
+                    <div className='m-2'>
                         <StaffInfoCard
                             image ={BabyYoda}
                             full_name = "Joshua Schappel"
@@ -33,41 +35,40 @@ function AboutContainer() {
                         />
                     </div>
 
-                    
-
-                    <div className='col-md-3 m-2'>
+                    <div className='m-2'>
                         <StaffInfoCard
-                            image ={BabyYoda}
+                            image ={Yoda2}
                             full_name = "Jonathan Bar Eli"
-                            bio = "A Seton Hall student who is interested in writing clean and efficient code."
-                            link ="https://github.com/jschappel"
+                            bio = "Interested in fullstack development and swimming. Also part time entrepreneur "
+                            link ="https://github.com/jonbareli"
                         />
                     </div>
 
-                    <div className='col-md-3 m-2'>
+                    <div className='m-2'>
                         <StaffInfoCard
                             image ={YodaCup}
                             full_name = "Jeremy Suero"
-                            bio = "A Seton Hall student who is interested in writing clean and efficient code."
-                            link ="https://github.com/jschappel"
+                            bio = "Student tutor who is the master of all things Racket."
+                            link ="https://github.com/iamyobany"
                         />
                     </div>
-
-                    <div className='col-md-3 m-2'>
+                </div>
+                <div className='row d-flex justify-content-center'>
+                    <div className='m-2'>
                         <StaffInfoCard
-                            image ={BabyYoda}
+                            image ={Yoda3}
                             full_name = "Melk Daly"
-                            bio = "A Seton Hall student who is interested in writing clean and efficient code."
-                            link ="https://github.com/jschappel"
+                            bio = "Seton Hall student who likes thinking about the big picture."
+                            link ="https://github.com/melkdelly"
                         />
                     </div>
                     
-                    <div className='col-md-3 m-2'>
+                    <div className='m-2'>
                         <StaffInfoCard
                             image ={Thor}
                             full_name = "Sachin Mahashabde"
-                            bio = "A man who truly believes in the super powers of recursion"
-                            link ="https://github.com/jschappel"
+                            bio = "A man who truly believes in the super powers of recursion. Imperative coding is for losers"
+                            link ="https://github.com/sachinmahashabde"
                         />
                     </div>
 
