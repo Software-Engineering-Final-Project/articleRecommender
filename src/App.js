@@ -8,6 +8,7 @@ import SearchHomePage from './Pages/search_home'
 import ProtectedRoute from './Components/protectedRoute'
 import ProfilePage from './Pages/profile_page'
 import ProfilePageUpdate from './Pages/profile_page_update'
+import Preferences from './Pages/preferences'
 
 
 /**
@@ -55,6 +56,7 @@ class App extends Component {
           <ProtectedRoute path='/search' component={SearchHomePage} state={this.state} />
           <Route path='/profilePage' component={ProfilePage} />
           <Route path='/ProfilePageUpdate' component={ProfilePageUpdate} />
+          
           <Route component={PageNotFound}/>
         </Switch>
       </BrowserRouter>
