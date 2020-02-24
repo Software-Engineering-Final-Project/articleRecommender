@@ -54,8 +54,8 @@ class App extends Component {
           <Route path='/testsearch' component={SearchHomePage} />
           <Route path='/testbuttons' component={Preferences}/>
           <ProtectedRoute path='/search' component={SearchHomePage} state={this.state} />
-          <Route path='/profilePage' component={ProfilePage} />
-          <Route path='/ProfilePageUpdate' component={ProfilePageUpdate} />
+          <Route path='/profile' component={ProfilePage} />
+          <Route path='/profileupdate' component={ProfilePageUpdate} />
           
           <Route component={PageNotFound}/>
         </Switch>

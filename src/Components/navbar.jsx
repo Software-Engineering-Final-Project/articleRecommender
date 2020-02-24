@@ -16,7 +16,7 @@ class Navbar extends Component {
             <div className="pos-f-t">
                 <div className="collapse" id="navbarToggleExternalContent">
                     <div className="bg-dark p-4">
-                        <h4 className="text-white">SearchIt</h4>
+                        <h4 className="text-white">Autism Searches</h4>
                         <span className="text-muted">A modern search browser for ASD related topics.</span>
                         <ul className="navbar-nav mr-auto">
                         <ListItem
@@ -25,7 +25,7 @@ class Navbar extends Component {
                         />
 
                         <ListItem
-                            text="Starred Articles"
+                            text="Starred Topics and Articles"
                             path='/favArticles'
                         />
 
