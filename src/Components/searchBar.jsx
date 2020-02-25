@@ -7,8 +7,8 @@ import React from 'react'
  */
 function searchBar(props) {
     return(
-        <div className="form-group row">
-            <div className="col-sm-10">
+        <div className="form-group justify-content-center row">
+            <div className="col-md-10">
                 <input 
                     type="text" 
                     className="form-control" 
@@ -16,7 +16,7 @@ function searchBar(props) {
                     style={{'width':'100%'}}>
                 </input>
             </div> 
-            <div className="col-sm-2">  
+            <div className="col-md-2">  
                 <button 
                     type="button" 
                     className="btn btn-outline-secondary"

@@ -22,6 +22,7 @@ class Preferences extends Component {
                         <div className='row justify-content-center mb-12'>
                             <div>
                                 { this.inputArray.map(inputArray => {
+                                    return(
                                     <div>
                                         <div 
                                             className="btn-lrg btn-group-toggle btn-group-justified btn-lrg" 
@@ -37,6 +38,7 @@ class Preferences extends Component {
                                             </button>
                                         </div>
                                     </div>
+                                    )
                                 })}
                             </div>
                         </div>
