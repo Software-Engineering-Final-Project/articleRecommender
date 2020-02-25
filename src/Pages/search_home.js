@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import Navbar from '../Components/navbar'
 import BabyYoda from '../Images/BabyYoda.jpg'
-
+import SearchBar from '../Components/searchBar'
 class HomeSearch extends Component {
 
     constructor(props) {
@@ -29,14 +29,7 @@ class HomeSearch extends Component {
                 <div className='col justify-content-center mb-3 text-center col-form-label-lg'>
             
                     <form>
-                        <div className="form-group row">
-                            <div className="col-sm-10">
-                                <input type="text" className="form-control" id="SearchBar" aria-describedby="searchHelp"  style={{'width':'100%'}}></input>
-                            </div> 
-                            <div className="col-sm-2">  
-                                <button type="button" className="btn btn-outline-secondary">Search</button>
-                            </div>
-                        </div>
+                        <SearchBar />
                         <small id="searchHelp" className="form-text text-muted">Your searches are based on your preferences. See profile for more information.</small>
                     </form>
                 </div>
