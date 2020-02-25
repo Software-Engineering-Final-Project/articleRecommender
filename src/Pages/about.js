@@ -6,11 +6,6 @@ import logo from '../Images/Logo.PNG'
 
 class AboutPage extends Component {
 
-    constructor(props) {
-        super(props)
-    }
-
-
     render() {
         return(
             <div className='container-fluid'>

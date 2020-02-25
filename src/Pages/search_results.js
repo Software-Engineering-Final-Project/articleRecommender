@@ -31,7 +31,7 @@ class SearchResults extends Component {
             <div className='container'>
                 <div className='flex-row justify-content-center mt-5'>
                     <form>
-                            <SearchBar />
+                        <SearchBar />
                     </form>
                 </div>
             </div>
