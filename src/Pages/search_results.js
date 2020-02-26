@@ -32,7 +32,7 @@ class SearchResults extends Component {
                 picture={BabyYoda}
             />
             <div className='container'>
-                <div className='flex-row mt-5'>
+                <div className='flex-row justify-content-center mt-5'>
                     <form className='justify-content-center'>
                         <SearchBar />
                     </form>
@@ -45,7 +45,7 @@ class SearchResults extends Component {
                     />
                 </div>
             </div>
-            <div className='container mt-3'>
+            <div className='container'>
                 <Results
                     number = { this.limit }
                     list = {this.state.resultList}

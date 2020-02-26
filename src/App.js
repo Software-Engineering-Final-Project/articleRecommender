@@ -8,8 +8,9 @@ import SearchHomePage from './Pages/search_home'
 import ProtectedRoute from './Components/protectedRoute'
 import ProfilePage from './Pages/profile_page'
 import ProfilePageUpdate from './Pages/profile_page_update'
-import Preferences from './Pages/preferences'
+import PreferencesPage from './Pages/preferences'
 import SearchResultPage from './Pages/search_results'
+import StarredTopicsPage from './Pages/starred_topics'
 
 /**
  * This Class handles the routing for the website. It uses react-router-dom for routing
@@ -53,7 +54,8 @@ class App extends Component {
           <Route path='/about' component={AboutPage} />
           <Route path='/testsearch' component={SearchHomePage} />
           <Route path='/results' component={SearchResultPage} />
-          <Route path='/testbuttons' component={Preferences}/>
+          <Route path='/testbuttons' component={PreferencesPage}/>
+          <Route path='/favorites' component={StarredTopicsPage}/>
           <ProtectedRoute path='/search' component={SearchHomePage} state={this.state} />
           <Route path='/profile' component={ProfilePage} />
           <Route path='/profileupdate' component={ProfilePageUpdate} />

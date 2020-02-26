@@ -20,8 +20,8 @@ class HomeSearch extends Component {
             <div className='row justify-content-center'>
                 <div class="jumbotron jumbotron-fluid" style={{'backgroundColor':'white'}}>
                     <div class="container">
-                        <h1 class="display-4">Autism Searches</h1>
-                        <p class="lead text-center">A tailored search for you and your family.</p>
+                        <h1 class="display-4 text-center">Autism Searches</h1>
+                        <p class="lead text-center">A modern search browser for ASD related topics.</p>
                     </div>
                 </div>
             </div>
