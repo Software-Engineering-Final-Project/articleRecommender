@@ -45,8 +45,8 @@ function AboutContainer() {
 
             <div className='flex-row mt-5'>
             <h3>Our Team</h3>
-                <p className="ml-2">Feel free to check us out the project <GithubLink/>, or contact our staff below:</p>
-                <div className='row d-flex justify-content-center'>
+                <p className="ml-2 mt-4 text-center" style={{'fontSize':'18px'}}>Feel free to check us out the project <GithubLink/>, or contact our staff below:</p>
+                <div className='row d-flex justify-content-center mt-4'>
                     <div className='m-2'>
                         <StaffInfoCard
                             image ={BabyYoda}
@@ -123,10 +123,10 @@ function GithubLink() {
 function StaffInfoCard(props) {
     return(
         <div className="card" style={{'width':'18rem'}}>
-            <img className="card-img-top" src={props.image} alt="Staff Photo"/>
+            <img className="card-img-top" src={props.image} alt=""/>
             <div className="card-body">
                 <h5 className="card-title">{props.full_name}</h5>
-                    <p class="card-text">{props.bio}</p>
+                    <p className="card-text">{props.bio}</p>
                     <a href={props.link} class="card-link">View Github Profile</a>
             </div>
         </div>
