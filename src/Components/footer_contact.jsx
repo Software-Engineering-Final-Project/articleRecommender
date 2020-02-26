@@ -28,6 +28,6 @@ export default function Footer() {
 function RedirectButton() {
     let history = useHistory()
     return (
-        <button type="button" onClick={() => history.push('/about')} className="btn btn-outline-dark">Need Information?</button>
+        <button type="button" onClick={() => history.push('/about')} className="btn btn-outline-dark">About Us</button>
     )
 }

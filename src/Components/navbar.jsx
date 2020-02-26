@@ -26,7 +26,7 @@ class Navbar extends Component {
 
                         <ListItem
                             text="Starred Topics and Articles"
-                            path='/favArticles'
+                            path='/favorites'
                         />
 
                         <ListItem
