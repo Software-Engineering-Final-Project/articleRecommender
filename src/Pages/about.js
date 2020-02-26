@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { HomeButton } from '../Components/buttons'
 import AboutInformation from '../Components/container_about'
-
+import '../CSS/about.css'
 
 class AboutPage extends Component {
 
@@ -9,10 +9,10 @@ class AboutPage extends Component {
         return(
             <div className='container-fluid'>
 
-                <div className='row justify-content-center' style={{'margin':'150px'}}>
+                <div className='row justify-content-center quote' style={{'margin':'150px'}}>
                     <blockquote className="blockquote text-center">
-                        <p className="mb-0">I do not suffer from Autism, but I do suffer from the way you treat me.</p>
-                        <footer className="blockquote-footer"><cite title="Source Title">Tylor Durdin</cite></footer>
+                        <p className="mb-0" style={{'fontSize':'36px'}}>Why fit in when you where born to stand out?</p>
+                        <footer className="blockquote-footer"><cite title="Source Title">Dr. Seuss</cite></footer>
                     </blockquote>
                 </div>
 
