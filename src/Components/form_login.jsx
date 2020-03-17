@@ -32,6 +32,7 @@ class Login extends Component {
                             value= {this.props.usernameValue}
                             onChange={this.props.onChange}
                             className='form-control loginInput'
+                            autoCorrect='new-username'
                             placeholder="example@shu.edu" />
                         <small className='form-text text-muted'>We'll never share your email with anyone else.</small>
                     </div>
@@ -42,6 +43,7 @@ class Login extends Component {
                             name='password'
                             value={this.props.passwordValue}
                             onChange={this.props.onChange}
+                            autoComplete='password'
                             className='form-control loginInput'
                             placeholder='password'/>
                     </div>

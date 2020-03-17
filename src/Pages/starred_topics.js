@@ -14,10 +14,8 @@ class StarredTopics extends Component {
         }
     }
 
-
-
-
     render() {
+        console.log(this.props.history)
         return(
             <Fragment>
                 <Navbar 

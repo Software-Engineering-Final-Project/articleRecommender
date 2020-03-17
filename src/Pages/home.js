@@ -4,6 +4,8 @@ import logo from '../Images/Logo.PNG'
 import CreateAccountRedirect from '../Components/account_create_link'
 import Footer from '../Components/footer_contact'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import auth from '../Components/auth'
+
 class Home extends Component {
 
     constructor() {
@@ -38,9 +40,7 @@ class Home extends Component {
         if(this.state.username !== "" && this.state.password !== "") {
             try{
                 const response = await this.fetchCredentials() // Fetch the results
-                const parsedBody = await this.handleLoginResponse(response) // parse the body
-                this.handleResponseBody(parsedBody) // handle the data in the body
-
+                await this.handleLoginResponse(response) // parse the body and log in
             } catch(error) {
                 this.setState({ hasError: error})
             }
@@ -62,7 +62,7 @@ class Home extends Component {
         }
         const JSONBody = JSON.stringify(body) // The json object to send to the API
 
-        return fetch('/validate', {
+        return fetch('/validate/login', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -75,8 +75,10 @@ class Home extends Component {
     // handles the API response and determines if the status was 200 or if there is an error to report
     async handleLoginResponse(response) {
         try {
-            const parsedBody = await this.parseResponseBody(response) // Parse the response
-            this.handleResponseBody(parsedBody) // Handle the successful response
+            // Parse the response and see if the username was valid
+            const parsedBody = await this.parseResponseBody(response)
+            // since we are this far we know the validation was correct so we will login and proceed
+            auth.login(() => this.props.history.push('/search'), parsedBody)
         } catch(error) {
             throw error
         }
@@ -89,13 +91,6 @@ class Home extends Component {
             throw `${response.status} Error: ${res.message}`
         }
         else return response.json()
-    }
-
-    // Handles the response and redirects the user to the next screen
-    handleResponseBody(data) {
-        const key = data.key
-        this.props.handler(true, key)
-        return this.props.history.push('/search')
     }
 
 

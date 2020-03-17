@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component } from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Home from "./Pages/home"
 import AccountCreationPage from './Pages/account_creation'
@@ -22,25 +22,25 @@ class App extends Component {
 
     this.state = {
       loggedIn: false,
-      authKey: null
+      account: null,
     }
 
     this.updateStateLogin = this.updateStateLogin.bind(this)
 
   }
 
-  // Updates the logged in state. If the status is false then it will log out the user. If the status is true then the user is logged in
-  //    with the user_id key
-  updateStateLogin(status, key) {
+  // Updates the logged in state. If the status is false then it will log out the user. 
+  //  If the status is true then the user is logged in
+  updateStateLogin(status, account) {
     if(status) {
       this.setState({
         loggedIn: true,
-        key: key
+        account: account
       })
-    } else{
+    } else {
       this.setState({
         loggedIn: false,
-        authKey: null
+        account: null
       })
     }
   }
@@ -52,12 +52,12 @@ class App extends Component {
           <Route exact path='/' render={ (props) => <Home {...props} handler={this.updateStateLogin}/> } />
           <Route path='/createAccount' component={AccountCreationPage} />
           <Route path='/about' component={AboutPage} />
-          <Route path='/testsearch' component={SearchHomePage} />
+          <ProtectedRoute path='/search' component={SearchHomePage} state={this.state} />
           <Route path='/results' component={SearchResultPage} />
           <Route path='/testbuttons' component={PreferencesPage}/>
           <Route path='/favorites' component={StarredTopicsPage}/>
           <ProtectedRoute path='/search' component={SearchHomePage} state={this.state} />
-          <Route path='/profile' component={ProfilePage} />
+          <ProtectedRoute path='/profile' component={ProfilePage} state={this.state} />
           <Route path='/profileupdate' component={ProfilePageUpdate} />
           
           <Route component={PageNotFound}/>

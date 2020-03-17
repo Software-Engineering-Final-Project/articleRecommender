@@ -2,26 +2,30 @@ import React, { Component, Fragment } from 'react'
 import Navbar from '../Components/navbar'
 import BabyYoda from '../Images/BabyYoda.jpg'
 import SearchBar from '../Components/searchBar'
+import auth from '../Components/auth'
+
 class HomeSearch extends Component {
 
     constructor(props) {
         super(props)
+        
+        this.user = auth.account
     }
 
     render() {
         return(
         <Fragment>
         <Navbar 
-            user="Baby Yoda"
+            user={ this.user.username }
             picture={BabyYoda}
         />
         <div className='vertical-center2'>
         <div className='container'>
             <div className='row justify-content-center'>
-                <div class="jumbotron jumbotron-fluid" style={{'backgroundColor':'white'}}>
-                    <div class="container">
-                        <h1 class="display-4 text-center">Autism Searches</h1>
-                        <p class="lead text-center">A modern search browser for ASD related topics.</p>
+                <div className="jumbotron jumbotron-fluid" style={{'backgroundColor':'white'}}>
+                    <div className="container">
+                        <h1 className="display-4 text-center">Autism Searches</h1>
+                        <p className="lead text-center">A modern search browser for ASD related topics.</p>
                     </div>
                 </div>
             </div>

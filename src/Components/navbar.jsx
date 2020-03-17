@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useHistory } from 'react-router-dom'
+import { useHistory, NavLink, withRouter } from 'react-router-dom'
+import auth from './auth'
+
 
 class Navbar extends Component {
 
@@ -10,7 +12,6 @@ class Navbar extends Component {
         this.singInIcon = <FontAwesomeIcon icon='sign-out-alt' />
 
     }
-
     render() {
         return (
             <div className="pos-f-t">
@@ -21,17 +22,20 @@ class Navbar extends Component {
                         <ul className="navbar-nav mr-auto">
                         <ListItem
                             text="Home"
-                            path='/testSearch'
+                            path='/search'
+                            history= {this.props.history}
                         />
 
                         <ListItem
                             text="Starred Topics and Articles"
                             path='/favorites'
+                            history= {this.props.history}
                         />
 
                         <ListItem
                             text="Edit Profile"
                             path='/profile'
+                            history= {this.props.history}
                         />
                         </ul>
                     </div>
@@ -42,7 +46,8 @@ class Navbar extends Component {
                         <img src={this.props.picture} width="30" height="30" className="d-inline-block rounded-circle align-top mr-2" alt="" />
                             {this.props.user}
                     </a>
-                    <LogoutButton />
+                    <LogoutButton 
+                        history= {this.props.history}/>
                 </nav>
             </div>
         )
@@ -57,11 +62,15 @@ class Navbar extends Component {
  * 3) text: The text to be displayed
  */
 function ListItem(props) {
-    let history = useHistory()
-    const act = props.active === true ? 'active' : ''
+    let history = props.history
+    const act = props.active === true ? 'active ' : ''
     return(
         <li className={`nav-item active ${act}`}>
-            <a className="nav-link text-light" href='javascript:void(0);' onClick={() => history.push(props.path)}>{props.text}</a>
+            <a className="nav-link text-light" href='#!' onClick={(e) => {
+                e.preventDefault()
+                history.push(props.path)}
+                }> {props.text}
+            </a>
         </li>
     )
 }
@@ -69,13 +78,17 @@ function ListItem(props) {
 /**
  * Redirects the user to the home page and logs them out.
  */
-function LogoutButton() {
-    let history = useHistory()
+function LogoutButton(props) {
+    let history = props.history
     const signOutIcon = <FontAwesomeIcon icon='sign-out-alt' />
-   
-    //TODO:Add set logout prop to true
+    
     return(
-    <button type="button" class="btn btn-outline-light" onClick={() => history.push('/')}>{signOutIcon}</button>
+    <button type="button" className="btn btn-outline-light" onClick={() => {
+        auth.logout(() =>{
+            history.push('/')
+        })}}>
+            {signOutIcon}
+    </button>
     )
 
 }
@@ -108,4 +121,4 @@ function ProfileButton(component) {
     )
 }
 
-export default Navbar
+export default withRouter(Navbar)

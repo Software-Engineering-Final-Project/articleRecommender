@@ -1,22 +1,29 @@
-import React, { Component } from "react"
+import React, { Component, Fragment } from "react"
 import { BackButton } from '../Components/buttons'
 import Pfp from '../Images/Goku.jpg'
 import Navbar from '../Components/navbar'
+import auth from '../Components/auth'
+import BabyYoda from '../Images/BabyYoda.jpg'
+
 class ProfilePage extends Component {
 
 
     constructor(props) {
         super(props)
+        
+        this.user = auth.account
     }
 
     render() {
         return (
+            <Fragment>
+                <Navbar
+                    user={ this.user.username }
+                    picture={BabyYoda}
+                />
+           
             <div className='container-fluid'>
                 <div className='mt-2'>
-                    <BackButton
-                        text= "Back to home page"
-                        type='btn-sm'
-                    />
                     <div className='row justify-content-center mb-5'>
                     <div className='w'>
                         <img src={Pfp} className="img-fluid" alt="Responsive"/>
@@ -45,11 +52,9 @@ class ProfilePage extends Component {
                         type='btn-sm'
                     />
                     </div>
-                    
                 </div>
-                
-
             </div>
+            </Fragment>
         )
 
     }
