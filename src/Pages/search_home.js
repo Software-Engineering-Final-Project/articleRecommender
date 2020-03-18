@@ -10,15 +10,37 @@ class HomeSearch extends Component {
         super(props)
         
         this.user = auth.account
+        this.image = "data:image/png;base64," + auth.account.image
     }
+
+
+    componentDidMount() {
+        // fetch('/account/testimage', {
+        //     headers: {
+        //         'Accept': 'image/png',
+        //         'Content-Type': 'application/json'
+        //     },
+        // })
+        // .then(response =>{ 
+        //     console.log(response)
+        //     return response.blob()})
+        // .then(image => {
+        //     let outside = URL.createObjectURL(image)
+            
+        //     this.setState({image: outside})
+        // })
+        // .catch(error => console.log(error))
+    }
+
 
     render() {
         return(
         <Fragment>
         <Navbar 
             user={ this.user.username }
-            picture={BabyYoda}
+            picture={this.image}
         />
+
         <div className='vertical-center2'>
         <div className='container'>
             <div className='row justify-content-center'>

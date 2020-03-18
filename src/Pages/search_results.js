@@ -4,7 +4,7 @@ import Navbar from '../Components/navbar'
 import BabyYoda from '../Images/BabyYoda.jpg'
 import Results from '../Components/search_result'
 import PageNumbers from '../Components/page_numbers'
-
+import auth from '../Components/auth'
 
 class SearchResults extends Component {
 
@@ -20,6 +20,7 @@ class SearchResults extends Component {
         }
 
         this.limit = 10 // The number of results per page
+        this.image = "data:image/png;base64," + auth.account.image
 
     }
 
@@ -29,7 +30,7 @@ class SearchResults extends Component {
             <Fragment>
             <Navbar 
                 user="Baby Yoda"
-                picture={BabyYoda}
+                picture={this.image}
             />
             <div className='container'>
                 <div className='flex-row justify-content-center mt-5'>

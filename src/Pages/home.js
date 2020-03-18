@@ -62,7 +62,7 @@ class Home extends Component {
         }
         const JSONBody = JSON.stringify(body) // The json object to send to the API
 
-        return fetch('/validate/login', {
+        return fetch('/authenticate/login', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

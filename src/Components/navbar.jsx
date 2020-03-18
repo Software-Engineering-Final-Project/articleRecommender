@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useHistory, NavLink, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import auth from './auth'
 
 
@@ -42,7 +42,13 @@ class Navbar extends Component {
                 </div>
                 <nav className="navbar navbar-dark" style={{'backgroundColor': '#60b0f4'}}>
                     <NavPullDown />
-                    <a className="navbar-brand" href="/profile">
+                    <a 
+                        className="navbar-brand" 
+                        href="#!" 
+                        onClick={(e) => {
+                            e.preventDefault()
+                            this.props.history.push("/profile")}
+                        }>
                         <img src={this.props.picture} width="30" height="30" className="d-inline-block rounded-circle align-top mr-2" alt="" />
                             {this.props.user}
                     </a>
@@ -106,18 +112,6 @@ function NavPullDown() {
             aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
         </button>
-    )
-}
-
-/**
- * Sends the user to the edit profile page
- */
-function ProfileButton(component) {
-    let history = useHistory()
-    
-    //TODO: Push the login status to the account page
-    return (
-        <button type="button" onClick={() => history.push('/account')}  className={'btn btn-outline-light'}>{component}</button>
     )
 }
 

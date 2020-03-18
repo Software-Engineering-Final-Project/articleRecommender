@@ -3,7 +3,6 @@ import { BackButton } from '../Components/buttons'
 import Pfp from '../Images/Goku.jpg'
 import Navbar from '../Components/navbar'
 import auth from '../Components/auth'
-import BabyYoda from '../Images/BabyYoda.jpg'
 
 class ProfilePage extends Component {
 
@@ -12,6 +11,8 @@ class ProfilePage extends Component {
         super(props)
         
         this.user = auth.account
+        this.image = "data:image/png;base64," + auth.account.image
+
     }
 
     render() {
@@ -19,30 +20,33 @@ class ProfilePage extends Component {
             <Fragment>
                 <Navbar
                     user={ this.user.username }
-                    picture={BabyYoda}
+                    picture={this.image}
                 />
            
             <div className='container-fluid'>
                 <div className='mt-2'>
                     <div className='row justify-content-center mb-5'>
                     <div className='w'>
-                        <img src={Pfp} className="img-fluid" alt="Responsive"/>
+                        <img src={this.image} className="img-fluid" alt="Responsive"/>
                     </div>
                 </div>
                 </div>
 
                 <div className='container'>
                     <div className='row justify-content-center mb-5'>
-                        <h3>First Name</h3>
+                        <h3>{this.user.first_name}</h3>
                     </div>
                     <div className='row justify-content-center mb-5'>
-                        <h3>Last Name</h3>
+                        <h3>{this.user.last_name}</h3>
                     </div>
                     <div className='row justify-content-center mb-5'>
-                        <h3>Username</h3>
+                        <h3>{this.user.username}</h3>
                     </div>
                     <div className='row justify-content-center mb-5'>
-                        <h3>Email</h3>
+                        <h3>{this.user.email}</h3>
+                    </div>
+                    <div className='row justify-content-center mb-5'>
+                        <h3>{this.user.status ? "active" : "inactive"}</h3>
                     </div>
                     <div className='row justify-content-center mb-3'></div>
 
@@ -56,11 +60,7 @@ class ProfilePage extends Component {
             </div>
             </Fragment>
         )
-
     }
-
-
-
 }
 
 export default ProfilePage

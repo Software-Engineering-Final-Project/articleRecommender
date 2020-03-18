@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react'
 import Navbar from '../Components/navbar'
 import BabyYoda from '../Images/BabyYoda.jpg'
+import auth from '../Components/auth'
+
 
 class StarredTopics extends Component {
 
@@ -12,6 +14,8 @@ class StarredTopics extends Component {
             favArticles: [],
             favCatagories: [],
         }
+        this.image = "data:image/png;base64," + auth.account.image
+
     }
 
     render() {
@@ -20,7 +24,7 @@ class StarredTopics extends Component {
             <Fragment>
                 <Navbar 
                     user="Baby Yoda"
-                    picture={BabyYoda}
+                    picture={this.image}
                 />
                 <div className='container'>
                     <div className='row justify-content-center'>
