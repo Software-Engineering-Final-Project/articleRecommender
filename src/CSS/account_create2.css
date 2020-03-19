@@ -91,6 +91,19 @@
   0% {
     transform: translateY(-500%);
   }
+
+  85% {
+    transform: translateY(1%);
+  }
+
+  89% {
+    transform: translateY(-1%);
+  }
+
+  95% {
+    transform: translateY(.5%);
+  }
+  
   100% {
     transform: translateY(0);
   }

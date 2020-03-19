@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from "react"
 import { BackButton } from '../Components/buttons'
-import Pfp from '../Images/Goku.jpg'
 import Navbar from '../Components/navbar'
 import auth from '../Components/auth'
 

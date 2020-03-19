@@ -18,10 +18,7 @@ function Category(props) {
             <div 
                 type="button"
                 style={ isPressed ? trueHighlightStyle : falseHighlightStyle } 
-                onClick={() => {
-                    setBoolean(!isPressed)
-                    console.log(isPressed)}
-                }
+                onClick={() => setBoolean(!isPressed)}
                 className="bubbleButton">
                 {props.name}
             </div>

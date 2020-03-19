@@ -1,8 +1,9 @@
 import React, { Component, Fragment } from 'react'
 import Footer from '../Components/footer_contact'
 import CreateForm from '../Components/form_account_create'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { BackButton } from '../Components/buttons'
-import logo from '../Images/Logo.PNG'
+
 
 
 class AccountCreationPage extends Component {
@@ -18,6 +19,9 @@ class AccountCreationPage extends Component {
             email: "",
             error_msg: null
         }
+
+        this.imageIcon = <FontAwesomeIcon icon={['fas', 'images']} size='sm' />
+
         //Bindings
         this.handleChange = this.handleChange.bind(this)
         this.handleFormSubmission = this.handleFormSubmission.bind(this)
@@ -55,16 +59,10 @@ class AccountCreationPage extends Component {
         }
     }
 
-    /*
-<a href={'/'} 
-                        style={{
-                            'fontSize':'14px',
-                            'color': '#60b0f4'}} >
-                        Return Home
-                    </a>
-    */
-
-
+    changePicture() {
+        console.log("We Here!!")
+    }
+   
     render() {
         return(
             <Fragment>
@@ -76,8 +74,13 @@ class AccountCreationPage extends Component {
                     />
                 </div>
                 <div className='row justify-content-center mb-3'>
-                    <div className='w-25'>
-                        <img src={logo} className="img-fluid" alt="Responsive"/>
+                    <div className='flex-row'>
+                        <img src='https://via.placeholder.com/150' className="img-fluid rounded-circle" style={{'width':'150', 'height': '150'}} alt="Responsive"/>
+                        <div className='justify-content-end'>
+                            <button type="button" className="btn btn-outline-secondary btn-sm" onClick={ () => this.changePicture()}>
+                                {this.imageIcon}
+                            </button>
+                        </div>
                     </div>
                 </div>
 

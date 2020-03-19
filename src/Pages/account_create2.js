@@ -34,20 +34,18 @@ class AccountCreationPage2 extends Component {
                     </div>  
                </div>
                 <div className='container-fluid vertical-center3'>
-                    <div className='container'>
                         <div className='row justify-content-center mb-12 categoriesMoveIn'>
                             { this.categories.map(inputArray => {
                                 return(
                                     <div className='d-flex col-md-3 col-sm-4 justify-content-center'>
-                                    <Category 
-                                        name = {inputArray.name}
-                                        description = { inputArray.description }
-                                    />
+                                        <Category 
+                                            name = {inputArray.name}
+                                            description = { inputArray.description }
+                                        />
                                     </div>
                                 )
                             })}
                         </div>
-                    </div>
                 </div>
                 <div className='container-fluid'>
                     <div className='d-flex justify-content-center'>
