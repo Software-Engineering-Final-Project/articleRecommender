@@ -1,10 +1,8 @@
-import React, { Component, Fragment } from 'react'
-import Footer from '../Components/footer_contact'
+import React, { Component } from 'react'
 import CreateForm from '../Components/form_account_create'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { BackButton } from '../Components/buttons'
-
-
+import ImageModal from '../Components/Modals/account_create_picture'
 
 class AccountCreationPage extends Component {
 
@@ -17,7 +15,8 @@ class AccountCreationPage extends Component {
             password: "",
             password_confirm: "",
             email: "",
-            error_msg: null
+            error_msg: null,
+            showModal: false,
         }
 
         this.imageIcon = <FontAwesomeIcon icon={['fas', 'images']} size='sm' />
@@ -48,7 +47,7 @@ class AccountCreationPage extends Component {
             this.setState({ error_msg: "Passwords do not match" })
         }
         else if(s.email === '' || s.first_name === '' || s.last_name === ''|| s.password === '' 
-        || s.password_confirm === '') {
+            || s.password_confirm === '') {
             this.setState({ error_msg: 'One or more fields are not filled in'})
         } else {
             const { error_msg, ...rest } = this.state
@@ -60,40 +59,44 @@ class AccountCreationPage extends Component {
     }
 
     changePicture() {
-        console.log("We Here!!")
+        //TODO: Add logic to change picture here
+        this.setState({ showModal: false })
     }
    
     render() {
         return(
-            <Fragment>
             <div className='container-fluid'>
-                <div className='mt-2'>
-                    <BackButton
-                        text='Back to Login'
-                        type='btn-sm'
-                    />
-                </div>
+                <BackButton
+                    text='Back to Login'
+                    type='btn-sm mt-2'
+                />
                 <div className='row justify-content-center mb-3'>
                     <div className='flex-row'>
-                        <img src='https://via.placeholder.com/150' className="img-fluid rounded-circle" style={{'width':'150', 'height': '150'}} alt="Responsive"/>
+                        <img 
+                            src= {'https://via.placeholder.com/150'} 
+                            className="img-fluid rounded-circle"
+                            style={{'width':'150px', 'height':'150px'}}
+                            alt="Responsive"
+                        />
                         <div className='justify-content-end'>
-                            <button type="button" className="btn btn-outline-secondary btn-sm" onClick={ () => this.changePicture()}>
+                            <button type="button" className="btn btn-outline-secondary btn-sm" onClick={ () => this.setState({ showModal: true })}>
                                 {this.imageIcon}
                             </button>
                         </div>
                     </div>
                 </div>
-
                 <CreateForm
                     handleChange={this.handleChange}
                     state = {this.state}
                     submit = {this.handleFormSubmission}
-                    errorMessage = {this.state.error_msg}
-                    
+                    errorMessage = {this.state.error_msg}  
+                />
+                <ImageModal 
+                    showModal = { this.state.showModal }
+                    modalTitle = "Choose an Image"
+                    closeModal = { () => this.changePicture() }
                 />
             </div>
-           <Footer />
-           </Fragment>
         )
     }
 }

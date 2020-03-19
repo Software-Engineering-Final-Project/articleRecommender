@@ -30,6 +30,14 @@
     -ms-animation: bubble-anim linear 1s ease-in-out;
 }
 
+
+body.modal-open {
+  overflow: hidden;
+  position: fixed;
+}
+
+
+
 @keyframes bubble-anim {
     0% {
       -webkit-transform: scale(1);

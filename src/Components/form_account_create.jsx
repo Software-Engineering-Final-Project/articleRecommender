@@ -75,14 +75,13 @@ class AccountForm extends Component {
                             className='form-control accountCreateInput'
                             placeholder='password'/>
                         <small
-                            className='d-flex form-text justify-content-center'
-                            style= {{'color':'#fd4250'}} >
-                            All fields are required in order to continue
+                            className='d-flex form-text justify-content-center'>
+                            Profile picture is optional
                         </small>
                     </div>
 
                     <div className='d-flex justify-content-center'>
-                        <button type='Submit' className='btn btn-secondary'>Create Account</button>
+                        <button type='Submit' className='btn btn-secondary'>Continue</button>
                     </div>
                     <div className='d-flex justify-content-center'>
                         {this.renderMessage()}

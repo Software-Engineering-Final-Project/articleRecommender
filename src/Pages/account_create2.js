@@ -49,9 +49,9 @@ class AccountCreationPage2 extends Component {
                 </div>
                 <div className='container-fluid'>
                     <div className='d-flex justify-content-center'>
-                        <button type='Submit' className='btn btn-secondary'>Create Account</button>
+                        <button type='Submit' className='btn btn-secondary btn-lg'>Create Account</button>
                     </div>
-                    </div>
+                </div>
             </Fragment>
         )
     }
