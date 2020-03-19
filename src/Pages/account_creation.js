@@ -7,8 +7,8 @@ import logo from '../Images/Logo.PNG'
 
 class AccountCreationPage extends Component {
 
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
 
         this.state = {
             first_name: "",
@@ -34,17 +34,11 @@ class AccountCreationPage extends Component {
 
     async handleFormSubmission(event) {
         event.preventDefault()
-        this.checkValidFields()
-        
-        try{
-            console.log("TODO: Establish connection with server")
-        } catch(error) {
-            this.setState( {error_msg: error})
-        }
+        this.checkFieldsAndContinue()
     }
 
     // makes sure that all input fields are valid
-    checkValidFields() {
+    checkFieldsAndContinue() {
         const s = this.state
         if(s.password !== s.password_confirm){
             this.setState({ error_msg: "Passwords do not match" })
@@ -52,6 +46,12 @@ class AccountCreationPage extends Component {
         else if(s.email === '' || s.first_name === '' || s.last_name === ''|| s.password === '' 
         || s.password_confirm === '') {
             this.setState({ error_msg: 'One or more fields are not filled in'})
+        } else {
+            const { error_msg, ...rest } = this.state
+            this.props.history.push({
+                pathname: '/createAccount2',
+                state: rest
+            })
         }
     }
 

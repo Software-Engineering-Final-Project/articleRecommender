@@ -3,12 +3,12 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Home from "./Pages/home"
 import AccountCreationPage from './Pages/account_creation'
 import AboutPage from './Pages/about'
-import PageNotFound from "./Pages/PageNotFound"
+import PageNotFound from "./Pages/pageNotFound"
 import SearchHomePage from './Pages/search_home'
 import ProtectedRoute from './Components/protectedRoute'
 import ProfilePage from './Pages/profile_page'
 import ProfilePageUpdate from './Pages/profile_page_update'
-import PreferencesPage from './Pages/preferences'
+import PreferencesPage from './Pages/account_create2'
 import SearchResultPage from './Pages/search_results'
 import StarredTopicsPage from './Pages/starred_topics'
 
@@ -52,9 +52,8 @@ class App extends Component {
           <Route exact path='/' render={ (props) => <Home {...props} handler={this.updateStateLogin}/> } />
           <Route path='/createAccount' component={AccountCreationPage} />
           <Route path='/about' component={AboutPage} />
-          <ProtectedRoute path='/search' component={SearchHomePage} state={this.state} />
           <Route path='/results' component={SearchResultPage} />
-          <Route path='/testbuttons' component={PreferencesPage}/>
+          <Route path='/createAccount2' component={PreferencesPage}/>
           <Route path='/favorites' component={StarredTopicsPage}/>
           <ProtectedRoute path='/search' component={SearchHomePage} state={this.state} />
           <ProtectedRoute path='/profile' component={ProfilePage} state={this.state} />

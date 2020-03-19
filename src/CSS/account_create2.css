@@ -1,0 +1,97 @@
+.bubbleButton {
+    background-color: rgba(43, 130, 255, 0.4);
+    height: 130px;
+    width: 130px;
+    display: flex; 
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    opacity: 0.9;
+    background: radial-gradient(circle at 50% 55%, rgba(240, 245, 255, 0.9), rgba(240, 245, 255, 0.9) 40%, rgba(225, 238, 255, 0.8) 60%, rgba(43, 130, 255, 0.4));    
+    border-radius: 70px;
+    margin: 10px;
+}
+
+.categoriesMoveIn {
+  animation: ease-out 2s 1 slideInFromLeft;
+  -webkit-animation: slideInFromLeft linear 2s ease-in-out;
+  -moz-animation: slideInFromLeft linear 2s ease-in-out;
+  -o-animation: slideInFromLeft linear 2s ease-in-out;
+  -ms-animation: slideInFromLeft linear 2s ease-in-out;
+}
+
+.bubbleButton:hover {
+
+    animation: bubble-anim linear 1s 1;
+    animation-fill-mode: forwards;
+    -webkit-animation: bubble-anim linear 1s ease-in-out;
+    -moz-animation: bubble-anim linear 1s ease-in-out;
+    -o-animation: bubble-anim linear 1s ease-in-out;
+    -ms-animation: bubble-anim linear 1s ease-in-out;
+}
+
+@keyframes bubble-anim {
+    0% {
+      -webkit-transform: scale(1);
+      transform: scale(1); 
+    }
+  
+    20% {
+      -webkit-transform: scaleY(0.95) scaleX(1.05);
+      transform: scaleY(0.95) scaleX(1.05); 
+    }
+  
+    48% {
+      -webkit-transform: scaleY(1.1) scaleX(0.9);
+      transform: scaleY(1.1) scaleX(0.9); 
+    }
+  
+    68% {
+      -webkit-transform: scaleY(0.98) scaleX(1.02);
+      transform: scaleY(0.98) scaleX(1.02); 
+    }
+  
+    80% {
+      -webkit-transform: scaleY(1.02) scaleX(0.98);
+      transform: scaleY(1.02) scaleX(0.98); 
+    }
+  
+    97%, 100% {
+      -webkit-transform: scale(1);
+      transform: scale(1); 
+    } 
+}
+
+
+@keyframes breath_in{
+    0% {
+      transform:  scale(1.0);
+    }
+    50% {
+      transform:  scale(1.05);
+    }
+    100% {
+      transform:  scale(1.1);
+    }
+}
+
+@keyframes breath_out{
+    0% {
+      transform:  scale(1.1);
+    }
+    50% {
+      transform:  scale(1.05);
+    }
+    100% {
+      transform:  scale(1.0);
+    }
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateY(-500%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
