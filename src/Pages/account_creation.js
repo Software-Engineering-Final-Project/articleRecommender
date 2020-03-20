@@ -11,11 +11,11 @@ class AccountCreationPage extends Component {
         super(props)
 
         this.state = {
-            first_name: "",
-            last_name: "",
-            password: "",
-            password_confirm: "",
-            email: "",
+            first_name: "J",
+            last_name: "L",
+            password: "L",
+            password_confirm: "L",
+            email: "J",
             error_msg: null,
             showModal: false,
             picture: {image: Default_User, path: "/default_user.png"},
@@ -76,7 +76,7 @@ class AccountCreationPage extends Component {
             || s.password_confirm === '') {
             this.setState({ error_msg: 'One or more fields are not filled in'})
         } else {
-            const { error_msg, ...rest } = this.state
+            const { error_msg, images, showModal, ...rest } = this.state
             this.props.history.push({
                 pathname: '/createAccount2',
                 state: rest

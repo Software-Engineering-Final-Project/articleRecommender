@@ -6,26 +6,25 @@ class AccountCreationPage2 extends Component {
 
     constructor(props) {
         super(props)
-        this.categories = [
-            { name: 'Academic', description: "test1" },
-            { name: 'Research', description: "test1" },
-            { name: 'General', description: "test1" },
-            { name: 'Chicken', description: "test1" },
-            { name: 'Academic', description: "test1" },
-            { name: 'Research', description: "test1" },
-            { name: 'General', description: "test1" },
-            { name: 'Chicken', description: "test1" },
-            { name: 'Academic', description: "test1" },
-            { name: 'Research', description: "test1" },
-            { name: 'General', description: "test1" },
-            { name: 'Chicken', description: "test1" },
-            
-        ]
+
+        this.state = {
+            categories: []
+        }
     }
 
+    componentDidMount() {
+        fetch('category/allCategories')
+        .then( result => result.json())
+        .then(data => {
+            this.setState({
+                categories: data
+            })
+        })
+        .catch(error => alert("Error connecting to the database. Please try again later"))
+    }
 
     render() {
-        console.log(this.props)
+        console.log(this.props.state)
         return (
             <Fragment>
                 <div className='container-fluid'>
@@ -33,9 +32,9 @@ class AccountCreationPage2 extends Component {
                         <h3 className='display-4 text-center'>Please choose the catagories that interest you</h3>
                     </div>  
                </div>
-                <div className='container-fluid vertical-center3'>
+                <div className='container-fluid justify-content-center vertical-center3'>
                         <div className='row justify-content-center mb-12 categoriesMoveIn'>
-                            { this.categories.map(inputArray => {
+                            { this.state.categories.map(inputArray => {
                                 return(
                                     <div className='d-flex col-md-3 col-sm-4 justify-content-center'>
                                         <Category 
