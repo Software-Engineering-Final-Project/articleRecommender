@@ -10,6 +10,7 @@ class AccountCreationPage2 extends Component {
         this.state = {
             categories: []
         }
+        this.account = this.props.history.location.state
     }
 
     componentDidMount() {
@@ -24,7 +25,6 @@ class AccountCreationPage2 extends Component {
     }
 
     render() {
-        console.log(this.props.state)
         return (
             <Fragment>
                 <div className='container-fluid'>
@@ -34,9 +34,9 @@ class AccountCreationPage2 extends Component {
                </div>
                 <div className='container-fluid justify-content-center vertical-center3'>
                         <div className='row justify-content-center mb-12 categoriesMoveIn'>
-                            { this.state.categories.map(inputArray => {
+                            { this.state.categories.map( (inputArray, num) => {
                                 return(
-                                    <div className='d-flex col-md-3 col-sm-4 justify-content-center'>
+                                    <div className='d-flex col-md-3 col-sm-4 justify-content-center' key={num}>
                                         <Category 
                                             name = {inputArray.name}
                                             description = { inputArray.description }
