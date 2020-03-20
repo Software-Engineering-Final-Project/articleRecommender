@@ -17,12 +17,15 @@ class AccountCreationPage extends Component {
             email: "",
             error_msg: null,
             showModal: false,
+            picture: {image: 'https://via.placeholder.com/150', path: "test_path"}
         }
 
         this.imageIcon = <FontAwesomeIcon icon={['fas', 'images']} size='sm' />
 
         //Bindings
         this.handleChange = this.handleChange.bind(this)
+        this.closeModal = this.closeModal.bind(this)
+        this.changePicture = this.changePicture.bind(this)
         this.handleFormSubmission = this.handleFormSubmission.bind(this)
     }
 
@@ -58,10 +61,19 @@ class AccountCreationPage extends Component {
         }
     }
 
-    changePicture() {
-        //TODO: Add logic to change picture here
+    changePicture(picture) {
+        console.log(picture)
+        this.setState({
+            showModal: false,
+            picture: picture
+        })
+    }
+
+
+    closeModal(){
         this.setState({ showModal: false })
     }
+
    
     render() {
         return(
@@ -73,7 +85,7 @@ class AccountCreationPage extends Component {
                 <div className='row justify-content-center mb-3'>
                     <div className='flex-row'>
                         <img 
-                            src= {'https://via.placeholder.com/150'} 
+                            src= { this.state.picture.image } 
                             className="img-fluid rounded-circle"
                             style={{'width':'150px', 'height':'150px'}}
                             alt="Responsive"
@@ -94,7 +106,8 @@ class AccountCreationPage extends Component {
                 <ImageModal 
                     showModal = { this.state.showModal }
                     modalTitle = "Choose an Image"
-                    closeModal = { () => this.changePicture() }
+                    closeModal = { () => this.closeModal() }
+                    onSubmit = { (picture) =>  this.changePicture(picture) }
                 />
             </div>
         )

@@ -57,7 +57,7 @@ class Login extends Component {
                         {this.renderMessage()}
                 </div>
             </div>
-            </div>
+        </div>
         )
     }
 }
