@@ -3,6 +3,7 @@ import CreateForm from '../Components/form_account_create'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { BackButton } from '../Components/buttons'
 import ImageModal from '../Components/Modals/account_create_picture'
+import Default_User from '../Images/default_user.png'
 
 class AccountCreationPage extends Component {
 
@@ -17,7 +18,8 @@ class AccountCreationPage extends Component {
             email: "",
             error_msg: null,
             showModal: false,
-            picture: {image: 'https://via.placeholder.com/150', path: "test_path"}
+            picture: {image: Default_User, path: "/default_user.png"},
+            images: []
         }
 
         this.imageIcon = <FontAwesomeIcon icon={['fas', 'images']} size='sm' />
@@ -27,6 +29,27 @@ class AccountCreationPage extends Component {
         this.closeModal = this.closeModal.bind(this)
         this.changePicture = this.changePicture.bind(this)
         this.handleFormSubmission = this.handleFormSubmission.bind(this)
+        this.componentDidMount = this.componentDidMount.bind(this)
+    }
+
+
+    componentDidMount() {
+        fetch('image/all')
+        .then( result => result.json())
+        .then( data => {
+            // find the default user
+            let default_user = 0;
+            for(let i = 0; i < data.length; i++) {
+                if(data[i].path === '/default_user.png'){
+                    default_user = i;
+                }
+            }
+            this.setState({
+                images: data,
+                picture: data[default_user]
+            })
+        })
+        .catch(error => alert("Unable to connect to the database. Please try again later!"))
     }
 
 
@@ -62,7 +85,6 @@ class AccountCreationPage extends Component {
     }
 
     changePicture(picture) {
-        console.log(picture)
         this.setState({
             showModal: false,
             picture: picture
@@ -85,7 +107,7 @@ class AccountCreationPage extends Component {
                 <div className='row justify-content-center mb-3'>
                     <div className='flex-row'>
                         <img 
-                            src= { this.state.picture.image } 
+                            src= { this.state.picture.image === Default_User ? Default_User : "data:image/png;base64," + this.state.picture.image} 
                             className="img-fluid rounded-circle"
                             style={{'width':'150px', 'height':'150px'}}
                             alt="Responsive"
@@ -103,12 +125,18 @@ class AccountCreationPage extends Component {
                     submit = {this.handleFormSubmission}
                     errorMessage = {this.state.error_msg}  
                 />
-                <ImageModal 
-                    showModal = { this.state.showModal }
-                    modalTitle = "Choose an Image"
-                    closeModal = { () => this.closeModal() }
-                    onSubmit = { (picture) =>  this.changePicture(picture) }
-                />
+                { this.state.showModal ?
+                    <ImageModal 
+                        showModal = { this.state.showModal }
+                        modalTitle = "Choose an Image"
+                        closeModal = { () => this.closeModal() }
+                        onSubmit = { (picture) =>  this.changePicture(picture) }
+                        images = { this.state.images }
+                        default = { this.state.picture }
+                    />
+                    : 
+                    null 
+                }
             </div>
         )
     }

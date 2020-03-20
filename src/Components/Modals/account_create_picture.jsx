@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Image from '../image'
+//import Default_User from '../Images/default_user.png'
 
 
 /** A Modal to display all images Requires the following props:
@@ -7,21 +8,13 @@ import Image from '../image'
  * @param { string } modalTitle: The title of the modal
  * @param { callback } closeModal: A function that determines what happens after the modal is closed
  * @param { callback (x) } onSubmit: A function with one parameter that determines what happens on form submission
+ * @param { [{image: , path:}] } images: The images to be rendered in the modal
+ * @param { {image: , path:} } default: The default image
  */
 function ImageModal(props) {
 
-    const images = [
-        {image: 'https://via.placeholder.com/150', path: 0},
-        {image: 'https://via.placeholder.com/150', path: 1},
-        {image: 'https://via.placeholder.com/250', path: 2},
-        {image: 'https://via.placeholder.com/150', path: 3},
-        {image: 'https://via.placeholder.com/150', path: 4},
-        {image: 'https://via.placeholder.com/150', path: 5},
-        {image: 'https://via.placeholder.com/150', path: 6},
-        {image: 'https://via.placeholder.com/150', path: 7},
-    ]
-
-    const [selected, changeSelected] = useState(images[0])
+    const images = props.images
+    const [selected, changeSelected] = useState(props.default)
 
     return(
         <div className={`modal ${props.showModal ? 'show' : ''}`} 
@@ -48,9 +41,9 @@ function ImageModal(props) {
                                     return(
                                         <div className='d-flex col-md-4 col-sm-6 justify-content-center mb-4' key={key}>
                                             <Image 
-                                                image = { picture.image }
+                                                image = { "data:image/png;base64," + picture.image }
                                                 path = { picture.path }
-                                                isSelected = { picture.path == selected.path ? true : false }
+                                                isSelected = { picture.path === selected.path ? true : false }
                                                 onClick = { () => changeSelected(picture) }
                                             />
                                         </div>
