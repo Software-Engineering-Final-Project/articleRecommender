@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import SearchBar from '../Components/searchBar'
 import Navbar from '../Components/navbar'
-import BabyYoda from '../Images/BabyYoda.jpg'
 import Results from '../Components/search_result'
 import PageNumbers from '../Components/page_numbers'
 import auth from '../Components/auth'

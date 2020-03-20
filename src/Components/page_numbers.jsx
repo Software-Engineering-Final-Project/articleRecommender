@@ -43,7 +43,7 @@ function InactiveNumber(props) {
     console.log("here")
     return(
         <li className="page-item">
-            <a className="page-link" href="#">{ props.number }</a>
+            <a className="page-link" href="#!">{ props.number }</a>
         </li>
     )
 }

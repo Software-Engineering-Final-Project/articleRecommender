@@ -10,10 +10,6 @@ import '../CSS/input.css'
  */
 class Login extends Component {
 
-    constructor(props) {
-        super(props)
-    }
-
     // Renders a message if any errors have ocurred
     renderMessage() {
         return <p style={{'color':'red'}}>{this.props.message}</p>

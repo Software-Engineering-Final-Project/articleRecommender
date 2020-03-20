@@ -88,7 +88,7 @@ class Home extends Component {
     async parseResponseBody(response){
         if( response.status !== 200) {
             const res = await response.json()
-            throw `${response.status} Error: ${res.message}`
+            throw new Error(`${response.status} Error: ${res.message}`)
         }
         else return response.json()
     }

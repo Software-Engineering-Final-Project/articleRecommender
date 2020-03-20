@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react'
 import Navbar from '../Components/navbar'
-import BabyYoda from '../Images/BabyYoda.jpg'
 import auth from '../Components/auth'
 
 

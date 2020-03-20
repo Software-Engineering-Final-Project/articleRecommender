@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 /** An image that is 150x150. Requires the following props:
  * @param { string } image: the image to display
