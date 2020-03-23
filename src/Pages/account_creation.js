@@ -11,11 +11,12 @@ class AccountCreationPage extends Component {
         super(props)
 
         this.state = {
-            first_name: "J",
-            last_name: "L",
-            password: "L",
-            password_confirm: "L",
-            email: "J",
+            username: "jschappel",
+            first_name: "Josh",
+            last_name: "Schappel",
+            password: "password",
+            password_confirm: "password",
+            email: "jmschappel12@gmail.com",
             error_msg: null,
             showModal: false,
             picture: {image: Default_User, path: "/default_user.png"},
@@ -63,26 +64,76 @@ class AccountCreationPage extends Component {
 
     async handleFormSubmission(event) {
         event.preventDefault()
-        this.checkFieldsAndContinue()
+
+        if(this.fieldsAreValid()) {
+            try {
+                const response = await this.sendNewAccountToServer()
+                if(response.status !== 201) {
+                    const body = await response.json()
+                    console.log(body)
+                    throw Error(body.message)
+                } else{
+                    const body = await response.json()
+                    const id = body.id // primary key of the created account
+
+                    this.props.history.push({
+                        pathname: '/createAccount2',
+                        account_id: id
+                    })
+                }
+            } catch(error) {
+                this.setState({error_msg: error.message})
+            }
+        }
     }
 
-    // makes sure that all input fields are valid
-    checkFieldsAndContinue() {
-        const s = this.state
-        if(s.password !== s.password_confirm){
-            this.setState({ error_msg: "Passwords do not match" })
-        }
-        else if(s.email === '' || s.first_name === '' || s.last_name === ''|| s.password === '' 
-            || s.password_confirm === '') {
-            this.setState({ error_msg: 'One or more fields are not filled in'})
-        } else {
+    /*
+    else {
             const { error_msg, images, showModal, ...rest } = this.state
             this.props.history.push({
                 pathname: '/createAccount2',
                 state: rest
             })
         }
+    */
+
+    // makes sure that all input fields are valid
+    fieldsAreValid() {
+        const s = this.state
+        if(s.password !== s.password_confirm){
+            this.setState({ error_msg: "Passwords do not match" })
+            return false
+        }
+        else if(s.email === '' || s.first_name === '' || s.last_name === ''|| s.password === '' 
+            || s.password_confirm === '') {
+            this.setState({ error_msg: 'One or more fields are not filled in'})
+            return false
+        } else {
+            return true
+        }
     }
+
+
+    sendNewAccountToServer() {
+        return fetch('/account/create', {
+            method: 'PUT',
+            headers: {
+                'Accept': 'application/json',
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify({
+                username: this.state.username,
+                password: this.state.password,
+                first_name: this.state.first_name,
+                last_name: this.state.last_name,
+                email: this.state.email,
+                path: this.state.picture.path,
+                status: true
+
+            })
+        })
+    }
+
 
     changePicture(picture) {
         this.setState({
@@ -108,7 +159,7 @@ class AccountCreationPage extends Component {
                     <div className='flex-row'>
                         <img 
                             src= { this.state.picture.image === Default_User ? Default_User : "data:image/png;base64," + this.state.picture.image} 
-                            className="img-fluid rounded-circle"
+                            className="img-fluid rounded"
                             style={{'width':'150px', 'height':'150px'}}
                             alt="Responsive"
                         />

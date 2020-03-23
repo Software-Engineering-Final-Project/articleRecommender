@@ -23,7 +23,7 @@ function OneFiftyImage(props) {
         <img 
             src= {props.image}
             name = { props.path }
-            className="img-fluid rounded-circle"
+            className="img-fluid rounded"
             style={ props.isSelected ? selectedCSS : unSelectedCSS }
             onClick={ () => props.onClick(props.path) } 
             alt="Responsive"

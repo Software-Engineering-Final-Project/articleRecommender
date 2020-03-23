@@ -5,7 +5,7 @@ import AccountCreationPage from './Pages/account_creation'
 import AboutPage from './Pages/about'
 import PageNotFound from "./Pages/pageNotFound"
 import SearchHomePage from './Pages/search_home'
-import ProtectedRoute from './Components/protectedRoute'
+import { ProtectedRoute } from './Components/protectedRoute'
 import ProfilePage from './Pages/profile_page'
 import ProfilePageUpdate from './Pages/profile_page_update'
 import PreferencesPage from './Pages/account_create2'

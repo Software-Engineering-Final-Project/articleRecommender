@@ -33,6 +33,7 @@ class HomeSearch extends Component {
 
 
     render() {
+        console.log(auth.account)
         return(
         <Fragment>
         <Navbar 

@@ -10,7 +10,7 @@ class AccountCreationPage2 extends Component {
         this.state = {
             categories: []
         }
-        this.account = this.props.history.location.state
+        this.account_id = this.props.history.location.account_id
     }
 
     componentDidMount() {

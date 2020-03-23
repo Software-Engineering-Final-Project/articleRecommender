@@ -22,7 +22,17 @@ class AccountForm extends Component {
             <div className='row justify-content-center'>
                 <form className=' needs-validation' onSubmit={this.props.submit} noValidate>
                     <div className='form-group'>
-                        <label>First Name <label style={{'color':'red'}}>*</label></label>
+                        <label>Username<label style={{'color':'red'}}>*</label></label>
+                        <input 
+                            type='username' 
+                            name='username' 
+                            value= {parentComponentValues.username}
+                            onChange={this.props.handleChange}
+                            className='form-control accountCreateInput'
+                            placeholder="TAltenkirch42" />
+                    </div>
+                    <div className='form-group'>
+                        <label>First Name<label style={{'color':'red'}}>*</label></label>
                         <input 
                             type='username' 
                             name='first_name' 
