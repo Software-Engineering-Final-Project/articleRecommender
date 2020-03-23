@@ -21,7 +21,7 @@ class Login extends Component {
                 <div className='row justify-content-center'>
                 <form className=' needs-validation' onSubmit={this.props.onSubmit} noValidate>
                     <div className='form-group'>
-                        <label>Email Address</label>
+                        <label>Username</label>
                         <input 
                             type='username' 
                             name='username' 
@@ -29,7 +29,7 @@ class Login extends Component {
                             onChange={this.props.onChange}
                             className='form-control loginInput'
                             autoCorrect='new-username'
-                            placeholder="example@shu.edu" />
+                            placeholder="username" />
                         <small className='form-text text-muted'>We'll never share your email with anyone else.</small>
                     </div>
                     <div className='form-group'>

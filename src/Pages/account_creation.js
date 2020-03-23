@@ -11,12 +11,12 @@ class AccountCreationPage extends Component {
         super(props)
 
         this.state = {
-            username: "jschappel",
-            first_name: "Josh",
-            last_name: "Schappel",
-            password: "password",
-            password_confirm: "password",
-            email: "jmschappel12@gmail.com",
+            username: "",
+            first_name: "",
+            last_name: "",
+            password: "",
+            password_confirm: "",
+            email: "",
             error_msg: null,
             showModal: false,
             picture: {image: Default_User, path: "/default_user.png"},
@@ -29,6 +29,7 @@ class AccountCreationPage extends Component {
         this.handleChange = this.handleChange.bind(this)
         this.closeModal = this.closeModal.bind(this)
         this.changePicture = this.changePicture.bind(this)
+        this.handleServerError = this.handleServerError.bind(this)
         this.handleFormSubmission = this.handleFormSubmission.bind(this)
         this.componentDidMount = this.componentDidMount.bind(this)
     }
@@ -50,7 +51,7 @@ class AccountCreationPage extends Component {
                 picture: data[default_user]
             })
         })
-        .catch(error => alert("Unable to connect to the database. Please try again later!"))
+        .catch(error => alert("Unable to connect to the server. Please try again later!"))
     }
 
 
@@ -69,9 +70,7 @@ class AccountCreationPage extends Component {
             try {
                 const response = await this.sendNewAccountToServer()
                 if(response.status !== 201) {
-                    const body = await response.json()
-                    console.log(body)
-                    throw Error(body.message)
+                  this.handleServerError(response)
                 } else{
                     const body = await response.json()
                     const id = body.id // primary key of the created account
@@ -87,25 +86,24 @@ class AccountCreationPage extends Component {
         }
     }
 
-    /*
-    else {
-            const { error_msg, images, showModal, ...rest } = this.state
-            this.props.history.push({
-                pathname: '/createAccount2',
-                state: rest
-            })
+    // Handles the different types of errors, so we do not expose to much of the server
+    async handleServerError(serverResponse) {
+        if(serverResponse.status === 500) {
+            alert("Unable to connect to the server. Please try again later!")
+        } else {
+            const body = await serverResponse.json()
+            throw Error(body.message)
         }
-    */
+    }
 
     // makes sure that all input fields are valid
     fieldsAreValid() {
         const s = this.state
-        if(s.password !== s.password_confirm){
-            this.setState({ error_msg: "Passwords do not match" })
+        if(s.password !== s.password_confirm || s.password.trim() === ''){
+            this.setState({ error_msg: "Passwords do not match or are a blank space" })
             return false
         }
-        else if(s.email === '' || s.first_name === '' || s.last_name === ''|| s.password === '' 
-            || s.password_confirm === '') {
+        else if(s.email.trim() === '' || s.first_name.trim() === '' || s.last_name.trim() === '') {
             this.setState({ error_msg: 'One or more fields are not filled in'})
             return false
         } else {

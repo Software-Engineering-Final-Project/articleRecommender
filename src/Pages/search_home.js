@@ -12,26 +12,6 @@ class HomeSearch extends Component {
         this.image = "data:image/png;base64," + auth.account.image
     }
 
-
-    componentDidMount() {
-        // fetch('/account/testimage', {
-        //     headers: {
-        //         'Accept': 'image/png',
-        //         'Content-Type': 'application/json'
-        //     },
-        // })
-        // .then(response =>{ 
-        //     console.log(response)
-        //     return response.blob()})
-        // .then(image => {
-        //     let outside = URL.createObjectURL(image)
-            
-        //     this.setState({image: outside})
-        // })
-        // .catch(error => console.log(error))
-    }
-
-
     render() {
         console.log(auth.account)
         return(

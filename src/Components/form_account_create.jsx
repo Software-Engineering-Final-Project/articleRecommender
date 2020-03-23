@@ -29,7 +29,7 @@ class AccountForm extends Component {
                             value= {parentComponentValues.username}
                             onChange={this.props.handleChange}
                             className='form-control accountCreateInput'
-                            placeholder="TAltenkirch42" />
+                            placeholder="username" />
                     </div>
                     <div className='form-group'>
                         <label>First Name<label style={{'color':'red'}}>*</label></label>
