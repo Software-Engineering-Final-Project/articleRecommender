@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import Image from '../image'
-//import Default_User from '../Images/default_user.png'
 
 
 /** A Modal to display all images Requires the following props:
@@ -63,6 +62,5 @@ function ImageModal(props) {
         </div>
     )
 }
-
 
 export default ImageModal
