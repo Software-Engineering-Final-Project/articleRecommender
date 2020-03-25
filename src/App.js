@@ -1,14 +1,14 @@
 import React, {Component } from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Home from "./Pages/home"
-import AccountCreationPage from './Pages/account_creation'
 import AboutPage from './Pages/about'
 import PageNotFound from "./Pages/pageNotFound"
 import SearchHomePage from './Pages/search_home'
 import { ProtectedRoute } from './Components/protectedRoute'
 import ProfilePage from './Pages/profile_page'
 import ProfilePageUpdate from './Pages/profile_page_update'
-import PreferencesPage from './Pages/account_create2'
+import AccountCreationPage1 from './Pages/account_create'
+import AccountCreationPage2 from './Pages/account_create2'
 import SearchResultPage from './Pages/search_results'
 import StarredTopicsPage from './Pages/starred_topics'
 
@@ -50,10 +50,10 @@ class App extends Component {
       <BrowserRouter>
         <Switch>
           <Route exact path='/' render={ (props) => <Home {...props} handler={this.updateStateLogin}/> } />
-          <Route path='/createAccount' component={AccountCreationPage} />
+          <Route path='/createAccount' component={AccountCreationPage1} />
+          <Route path='/createAccount2' component={AccountCreationPage2}/>
           <Route path='/about' component={AboutPage} />
           <Route path='/results' component={SearchResultPage} />
-          <Route path='/createAccount2' component={PreferencesPage}/>
           <Route path='/favorites' component={StarredTopicsPage}/>
           <ProtectedRoute path='/search' component={SearchHomePage} state={this.state} />
           <ProtectedRoute path='/profile' component={ProfilePage} state={this.state} />

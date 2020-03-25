@@ -10,7 +10,8 @@ class AccountCreationPage2 extends Component {
         this.state = {
             categories: []
         }
-        this.account_id = this.props.history.location.account_id
+        this.set = new Set()
+        this.account_id = 1 //this.props.history.location.account_id
     }
 
     componentDidMount() {
@@ -22,6 +23,52 @@ class AccountCreationPage2 extends Component {
             })
         })
         .catch(error => alert("Error connecting to the database. Please try again later"))
+    }
+
+
+    async addCategoriesToAccount() {
+        if(this.set.size === 0){
+            this.props.history.push('/')
+            alert("Account Creation Complete!")
+        } else {
+            const categoryList = this.filterOutUnSelectedCategories()
+            try {
+                const response = await this.sendSelectedCategoriesToServer(categoryList)
+                if( response != 200) {
+                    const body = response.json()
+                    alert(body.message)
+                } else {
+                    this.props.history.push('/')
+                    alert('Account Creation complete!')
+                }
+            } catch (error) {
+                alert("Error with server post request")
+            }
+        }
+    }
+
+    sendSelectedCategoriesToServer(body) {
+        const url = `account/addCategories?id=${this.account_id}`
+        return fetch(url, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body),
+        })
+    }
+
+    
+
+    filterOutUnSelectedCategories(){
+        this.state.categories.filter( (category) => {
+            if(this.set.has(category.id)) {
+                this.set.delete(category.id)
+                return true
+            }
+            return false
+        })
     }
 
     render() {
@@ -40,6 +87,8 @@ class AccountCreationPage2 extends Component {
                                         <Category 
                                             name = {inputArray.name}
                                             description = { inputArray.description }
+                                            id = { inputArray.id }
+                                            set = { this.set }
                                         />
                                     </div>
                                 )
@@ -48,7 +97,7 @@ class AccountCreationPage2 extends Component {
                 </div>
                 <div className='container-fluid'>
                     <div className='d-flex justify-content-center'>
-                        <button type='Submit' className='btn btn-secondary btn-lg'>Create Account</button>
+                        <button type='Submit' onClick={ () => this.addCategoriesToAccount() } className='btn btn-secondary btn-lg'>Create Account</button>
                     </div>
                 </div>
             </Fragment>
