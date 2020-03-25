@@ -11,7 +11,7 @@ class AccountCreationPage2 extends Component {
             categories: []
         }
         this.set = new Set()
-        this.account_id = 1 //this.props.history.location.account_id
+        this.account_id = 3 //this.props.history.location.account_id
     }
 
     componentDidMount() {
@@ -32,10 +32,11 @@ class AccountCreationPage2 extends Component {
             alert("Account Creation Complete!")
         } else {
             const categoryList = this.filterOutUnSelectedCategories()
+            console.log(categoryList)
             try {
                 const response = await this.sendSelectedCategoriesToServer(categoryList)
-                if( response != 200) {
-                    const body = response.json()
+                if( response.status != 200) {
+                    const body = await response.json()
                     alert(body.message)
                 } else {
                     this.props.history.push('/')
@@ -48,6 +49,7 @@ class AccountCreationPage2 extends Component {
     }
 
     sendSelectedCategoriesToServer(body) {
+        console.log(JSON.stringify(body))
         const url = `account/addCategories?id=${this.account_id}`
         return fetch(url, {
             method: 'POST',
@@ -62,7 +64,7 @@ class AccountCreationPage2 extends Component {
     
 
     filterOutUnSelectedCategories(){
-        this.state.categories.filter( (category) => {
+        return this.state.categories.filter( (category) => {
             if(this.set.has(category.id)) {
                 this.set.delete(category.id)
                 return true
@@ -80,20 +82,20 @@ class AccountCreationPage2 extends Component {
                     </div>  
                </div>
                 <div className='container-fluid justify-content-center vertical-center3'>
-                        <div className='row justify-content-center mb-12 categoriesMoveIn'>
-                            { this.state.categories.map( (inputArray, num) => {
-                                return(
-                                    <div className='d-flex col-md-3 col-sm-4 justify-content-center' key={num}>
-                                        <Category 
-                                            name = {inputArray.name}
-                                            description = { inputArray.description }
-                                            id = { inputArray.id }
-                                            set = { this.set }
-                                        />
-                                    </div>
-                                )
-                            })}
-                        </div>
+                    <div className='row justify-content-center mb-12 categoriesMoveIn'>
+                        { this.state.categories.map( (inputArray, num) => {
+                            return(
+                                <div className='d-flex col-md-3 col-sm-4 justify-content-center' key={num}>
+                                    <Category 
+                                        name = {inputArray.name}
+                                        description = { inputArray.description }
+                                        id = { inputArray.id }
+                                        set = { this.set }
+                                    />
+                                </div>
+                            )
+                        })}
+                    </div>
                 </div>
                 <div className='container-fluid'>
                     <div className='d-flex justify-content-center'>

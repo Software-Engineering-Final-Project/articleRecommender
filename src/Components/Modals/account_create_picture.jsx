@@ -15,14 +15,27 @@ function ImageModal(props) {
     const images = props.images
     const [selected, changeSelected] = useState(props.default)
 
+    const customStyles = {
+        content : {
+          top: '50%',
+          left: '50%',
+          right: 'auto',
+          bottom: 'auto',
+          marginRight: '-50%',
+          transform: 'translate(-50%, -50%)',
+          height: '500px', // <-- This sets the height
+          overflow: 'scroll' // <-- This tells the modal to scroll
+        }
+      };
+
     return(
-        <div className={`modal ${props.showModal ? 'show' : ''}`} 
-             style={{display: `${props.showModal ? 'block' : 'none'}`, backgroundColor: 'rgb(0,0,0,.8)'}}
+        <div className={`modal ${props.showModal ? 'show' : ''}`}
+             style={{display: `${props.showModal ? 'block' : 'none'}`, backgroundColor: 'rgb(0,0,0,.8)', 'overflowY':'auto', 'maxHeight':'100vh'}}
              tabIndex="-1" 
              role="dialog" 
              aria-label="exampleModalLabel"
              aria-hidden="true">
-            <div className="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div className="modal-dialog modal-dialog-centered modal-xl" role="document">
                 <div className="modal-content">
                     <div className="modal-header" id='blue-modal-header'>
                         <h4 className="modal-title" id="exampleModalLabel">{props.modalTitle}</h4>
