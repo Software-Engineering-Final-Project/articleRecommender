@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import Navbar from '../Components/navbar'
 import auth from '../Components/auth'
-
+import CategoryComponent from '../Components/category_view'
 
 class StarredTopics extends Component {
 
@@ -15,18 +15,25 @@ class StarredTopics extends Component {
         }
         this.image = "data:image/png;base64," + auth.account.image
 
+        // local bindings
+        this.componentDidMount = this.componentDidMount.bind(this)
+    }
+
+    componentDidMount() {
+        fetch(`/account/getCategories?id=${auth.account.id}`)
+        .then( response => response.status !== 200 ? alert("Error connecting to server") : response.json())
+        .then( data => this.setState({favCatagories: data}))
     }
 
     render() {
-        console.log(this.props.history)
         return(
             <Fragment>
                 <Navbar 
-                    user="Baby Yoda"
+                    user= {auth.account.username}
                     picture={this.image}
                 />
                 <div className='container'>
-                    <div className='row justify-content-center'>
+                    <div className='row justify-content-center mb-4'>
                         <div className="jumbotron jumbotron-fluid" style={{'backgroundColor':'white'}}>
                             <div className="container">
                                 <h1 className="display-4 text-center">Starred Topics</h1>
@@ -35,11 +42,33 @@ class StarredTopics extends Component {
                         </div>
                     </div>
                     <div className='row'>
-                        <p className='h4'>Articles</p>
+                        <div className='container-fluid'>
+                            <div className='row'>
+                                <p className='h3'>Articles</p>
+                            </div>
+                            <div className='row justify-content-center mt-4'>
+                                <h1 className='display-4 text-muted'>Coming Soon!</h1>
+                            </div>
+                        </div>
+                       
                     </div>
-
                     <div className='row'>
-                        <p className='h4'>Catagories</p>
+                        <div className='container-fluid'>
+                            <div className='row'>
+                                <p className='h3'>Catagories</p>
+                            </div>
+                            { this.state.favCatagories.map( (category, key) => {
+                                return(
+                                <div className='row justify-content-center'>
+                                    <CategoryComponent 
+                                        name = { category.name }
+                                        description = { category.description }
+                                    />
+                                </div>
+                                )
+                            })}
+                        </div>
+                       
                     </div>
                 </div>
             </Fragment>
