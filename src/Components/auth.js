@@ -1,28 +1,12 @@
 class Auth {
-
-    constructor() {
-        this.authenticated = false
-        this.account = null
-    }
-
-    login(callback, account) {
-        this.authenticated = true
+    // status: true if logged in
+    // account: an account object
+    // sessionKey: The session key sent from the server
+    constructor(status, account, sessionKey) {
+        this.authenticated = status
         this.account = account
-        callback()
+        this.sessionKey = sessionKey
     }
-
-
-    logout(callback) {
-        this.authenticated = false
-        this.account = null
-        callback()
-    }
-
-    isAuthenticated() {
-        return this.authenticated
-    }
-
 }
 
-
-export default new Auth();
+export default Auth;

@@ -4,7 +4,7 @@ import logo from '../Images/Logo.PNG'
 import CreateAccountRedirect from '../Components/account_create_link'
 import Footer from '../Components/footer_contact'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import auth from '../Components/auth'
+import Auth from '../Components/auth'
 
 class Home extends Component {
 
@@ -42,7 +42,7 @@ class Home extends Component {
                 const response = await this.fetchCredentials() // Fetch the results
                 await this.handleLoginResponse(response) // parse the body and log in
             } catch(error) {
-                this.setState({ hasError: error})
+                this.setState({ hasError: "invalid username or password"})
             }
         } 
 
@@ -78,7 +78,9 @@ class Home extends Component {
             // Parse the response and see if the username was valid
             const parsedBody = await this.parseResponseBody(response)
             // since we are this far we know the validation was correct so we will login and proceed
-            auth.login(() => this.props.history.push('/search'), parsedBody)
+            const auth = new Auth(true, parsedBody, "Key")
+            sessionStorage.setItem('auth', JSON.stringify(auth)) // place auth object into local storage
+            this.props.history.push('/search')
         } catch(error) {
             throw error
         }

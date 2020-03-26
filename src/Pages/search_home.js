@@ -1,19 +1,18 @@
 import React, { Component, Fragment } from 'react'
 import Navbar from '../Components/navbar'
 import SearchBar from '../Components/searchBar'
-import auth from '../Components/auth'
 
 class HomeSearch extends Component {
 
     constructor(props) {
         super(props)
-        
-        this.user = auth.account
-        this.image = "data:image/png;base64," + auth.account.image
+        const { account, sessionKey } = JSON.parse(sessionStorage.getItem('auth'))
+        this.sessionKey = sessionKey
+        this.user = account
+        this.image = "data:image/png;base64," + this.user.image
     }
 
     render() {
-        console.log(auth.account)
         return(
         <Fragment>
         <Navbar 

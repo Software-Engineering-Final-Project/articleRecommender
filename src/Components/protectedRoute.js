@@ -1,13 +1,14 @@
 import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
-import auth from '../Components/auth'
+//import auth from '../Components/auth'
 
 
 export const ProtectedRoute = ({component: Component, ...rest}) => {
     return(
         <Route {...rest} render= {
             (props) => {
-                if(auth.isAuthenticated()) {
+                const isAuthenticated = loadFromStorage()
+                if(isAuthenticated) {
                     return <Component {...props}/>
                 }
                 else {
@@ -24,4 +25,14 @@ export const ProtectedRoute = ({component: Component, ...rest}) => {
         
         }/>
     )
+}
+
+function loadFromStorage() {
+    const jsonAuth = sessionStorage.getItem('auth') || null
+    if(jsonAuth !== null) {
+        const auth = JSON.parse(jsonAuth)
+        return auth.authenticated
+    } else {
+        return false
+    }
 }

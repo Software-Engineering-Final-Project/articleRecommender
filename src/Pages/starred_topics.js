@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react'
 import Navbar from '../Components/navbar'
-import auth from '../Components/auth'
 import CategoryComponent from '../Components/category_view'
 
 class StarredTopics extends Component {
@@ -13,14 +12,18 @@ class StarredTopics extends Component {
             favArticles: [],
             favCatagories: [],
         }
-        this.image = "data:image/png;base64," + auth.account.image
+
+        const { account, sessionKey } = JSON.parse(sessionStorage.getItem('auth'))
+        this.sessionKey = sessionKey
+        this.user = account
+        this.image = "data:image/png;base64," + this.user.image
 
         // local bindings
         this.componentDidMount = this.componentDidMount.bind(this)
     }
 
     componentDidMount() {
-        fetch(`/account/getCategories?id=${auth.account.id}`)
+        fetch(`/account/getCategories?id=${this.user.id}`)
         .then( response => response.status !== 200 ? alert("Error connecting to server") : response.json())
         .then( data => this.setState({favCatagories: data}))
     }
@@ -29,7 +32,7 @@ class StarredTopics extends Component {
         return(
             <Fragment>
                 <Navbar 
-                    user= {auth.account.username}
+                    user= {this.user.username}
                     picture={this.image}
                 />
                 <div className='container'>

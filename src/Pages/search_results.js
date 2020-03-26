@@ -3,7 +3,6 @@ import SearchBar from '../Components/searchBar'
 import Navbar from '../Components/navbar'
 import Results from '../Components/search_result'
 import PageNumbers from '../Components/page_numbers'
-import auth from '../Components/auth'
 
 class SearchResults extends Component {
 
@@ -19,7 +18,11 @@ class SearchResults extends Component {
         }
 
         this.limit = 10 // The number of results per page
-        this.image = "data:image/png;base64," + auth.account.image
+
+        const { account, sessionKey } = JSON.parse(sessionStorage.getItem('auth'))
+        this.sessionKey = sessionKey
+        this.user = account
+        this.image = "data:image/png;base64," + this.user.image
 
     }
 

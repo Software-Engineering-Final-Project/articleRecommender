@@ -90,9 +90,9 @@ function LogoutButton(props) {
     
     return(
     <button type="button" className="btn btn-outline-light" onClick={() => {
-        auth.logout(() =>{
-            history.push('/')
-        })}}>
+        sessionStorage.removeItem('auth') // remove the auth item from session storage
+        history.push('/')
+        }}>
             {signOutIcon}
     </button>
     )

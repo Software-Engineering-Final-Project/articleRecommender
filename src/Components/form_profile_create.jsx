@@ -4,7 +4,6 @@ import '../CSS/input.css'
 
 class ProfileForm extends Component {
 
-
     constructor(props) {
         super(props)
     }
