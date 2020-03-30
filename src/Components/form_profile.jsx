@@ -6,33 +6,33 @@ function ProfileForm(props) {
             <FormRow
                 title='Username'
                 name='username'
-                value='bigPapaSchaps'
+                value={ props.username }
                 placeholder='username'
-                handleChange = {() => console.log("Hehehehhe")}
+                handleChange = {(e) => props.onChange(e)}
                 editable = { props.editable }
             />
             <FormRow
                 title='First name'
                 name='first_name'
-                value='Joshua'
+                value={ props.first_name }
                 placeholder='username'
-                handleChange = {() => console.log("Hehehehhe")}
+                handleChange = {(e) => props.onChange(e)}
                 editable = { props.editable }
             />
             <FormRow
                 title='Last Name'
                 name='last_name'
-                value='Schappel'
+                value={ props.last_name }
                 placeholder='username'
-                handleChange = {() => console.log("Hehehehhe")}
+                handleChange = {(e) => props.onChange(e)}
                 editable = { props.editable }
             />
             <FormRow
                 title='Email Address'
                 name='email'
-                value='schappel@shu.edu'
+                value={ props.email }
                 placeholder='username'
-                handleChange = {() => console.log("Hehehehhe")}
+                handleChange = {(e) => props.onChange(e)}
                 editable = { props.editable }
             />
         </form>

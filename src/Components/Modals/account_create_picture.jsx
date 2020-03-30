@@ -15,19 +15,6 @@ function ImageModal(props) {
     const images = props.images
     const [selected, changeSelected] = useState(props.default)
 
-    const customStyles = {
-        content : {
-          top: '50%',
-          left: '50%',
-          right: 'auto',
-          bottom: 'auto',
-          marginRight: '-50%',
-          transform: 'translate(-50%, -50%)',
-          height: '500px', // <-- This sets the height
-          overflow: 'scroll' // <-- This tells the modal to scroll
-        }
-      };
-
     return(
         <div className={`modal ${props.showModal ? 'show' : ''}`}
              style={{display: `${props.showModal ? 'block' : 'none'}`, backgroundColor: 'rgb(0,0,0,.8)', 'overflowY':'auto', 'maxHeight':'100vh'}}
@@ -51,7 +38,7 @@ function ImageModal(props) {
                             <div className='form-group d-flex row justify-content-center'>
                                 { images.map( (picture, key) => {
                                     return(
-                                        <div className='d-flex col-md-4 col-sm-6 justify-content-center mb-4' key={key}>
+                                        <div className='d-flex col-xl-3 col-lg-4 col-md-6 col-sm-6 justify-content-center mb-4' key={key}>
                                             <Image 
                                                 image = { "data:image/png;base64," + picture.image }
                                                 path = { picture.path }
@@ -62,10 +49,10 @@ function ImageModal(props) {
                                     )
                                 })}
                             </div>
-                            <div className='form-group d-flex row justify-content-center'>
+                            <div className='form-group d-flex row justify-content-center mt-5'>
                                 <button 
                                     type="submit" 
-                                    className="btn btn-primary">Submit
+                                    className="btn btn-lg btn-success">Submit
                                 </button>
                             </div>
                         </form>
