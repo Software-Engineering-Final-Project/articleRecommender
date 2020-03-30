@@ -6,7 +6,6 @@ import PageNotFound from "./Pages/pageNotFound"
 import SearchHomePage from './Pages/search_home'
 import { ProtectedRoute } from './Components/protectedRoute'
 import ProfilePage from './Pages/profile_page'
-import ProfilePageUpdate from './Pages/profile_page_update'
 import AccountCreationPage1 from './Pages/account_create'
 import AccountCreationPage2 from './Pages/account_create2'
 import SearchResultPage from './Pages/search_results'
@@ -56,9 +55,7 @@ class App extends Component {
           <Route path='/results' component={SearchResultPage} />
           <Route path='/favorites' component={StarredTopicsPage}/>
           <ProtectedRoute path='/search' component={SearchHomePage} state={this.state} />
-          <ProtectedRoute path='/profile' component={ProfilePage} state={this.state} />
-          <Route path='/profileupdate' component={ProfilePageUpdate} />
-          
+          <ProtectedRoute path='/profile' component={ProfilePage} state={this.state} />          
           <Route component={PageNotFound}/>
         </Switch>
       </BrowserRouter>

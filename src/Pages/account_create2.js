@@ -35,7 +35,7 @@ class AccountCreationPage2 extends Component {
             console.log(categoryList)
             try {
                 const response = await this.sendSelectedCategoriesToServer(categoryList)
-                if( response.status != 200) {
+                if( response.status !== 200) {
                     const body = await response.json()
                     alert(body.message)
                 } else {
