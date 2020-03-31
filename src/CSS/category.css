@@ -1,0 +1,37 @@
+.starSelected {
+    background: transparent;
+    outline: none;
+    border: none;
+    color: #d8bd27;
+}
+
+.starSelected:focus {
+    outline: none;
+}
+
+.starSelected:hover {
+    outline: none;
+    color: #b59d1a;
+}
+
+.starUnselected {
+    outline: none;
+    background: transparent;
+    border: none;
+}
+
+.starUnselected:focus {
+    outline: none;
+}
+
+.starUnselected:hover {
+    color: #d8bd27;
+}
+
+.categoryDiv {
+    outline: none;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: #959595;
+    border-width: 1px;
+}
