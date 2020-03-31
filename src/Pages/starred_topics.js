@@ -20,12 +20,25 @@ class StarredTopics extends Component {
 
         // local bindings
         this.componentDidMount = this.componentDidMount.bind(this)
+        this.selectOrDeselect = this.selectOrDeselect.bind(this)
     }
 
     componentDidMount() {
         fetch(`/account/getCategories?id=${this.user.id}`)
         .then( response => response.status !== 200 ? alert("Error connecting to server") : response.json())
-        .then( data => this.setState({favCatagories: data}))
+        .then( data => {
+            const newData = data.map( category => {
+                category.status = true
+                return category
+            })
+            this.setState({favCatagories: newData})
+        })
+    }
+
+    selectOrDeselect(index) {
+        let favCats = this.state.favCatagories
+        favCats[index].status= !favCats[index].status
+        this.setState({favCatagories: favCats})
     }
 
     render() {
@@ -40,7 +53,7 @@ class StarredTopics extends Component {
                         <div className="jumbotron jumbotron-fluid" style={{'backgroundColor':'white'}}>
                             <div className="container">
                                 <h1 className="display-4 text-center">Starred Topics</h1>
-                                <p className="lead text-center">Below are your favorite items. To remove an item click on the start and then hit submit at teh bottom of the page.</p>
+                                <p className="lead text-center">Below are your favorite articles and categories.</p>
                             </div>
                         </div>
                     </div>
@@ -56,16 +69,19 @@ class StarredTopics extends Component {
                        
                     </div>
                     <div className='row'>
-                        <div className='container-fluid'>
-                            <div className='row'>
                                 <p className='h3'>Catagories</p>
                             </div>
-                            { this.state.favCatagories.map( (category, key) => {
+                    <div className='row'>
+                        <div className='container-fluid'>
+                            { this.state.favCatagories.map( (category, index) => {
                                 return(
-                                <div className='row justify-content-center'>
+                                <div className='row justify-content-center' kye={index}>
                                     <CategoryComponent 
                                         name = { category.name }
                                         description = { category.description }
+                                        selected = { category.status }
+                                        index = { index }
+                                        onChange = { this.selectOrDeselect }
                                     />
                                 </div>
                                 )

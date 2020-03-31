@@ -51,7 +51,7 @@ function AboutContainer() {
                         <StaffInfoCard
                             image ={BabyYoda}
                             full_name = "Joshua Schappel"
-                            bio = "A Seton Hall student who is interested in writing clean and efficient code."
+                            bio = "Concurrency enthusiast who is interested in writing clean and efficient code."
                             link ="https://github.com/jschappel"
                         />
                     </div>
