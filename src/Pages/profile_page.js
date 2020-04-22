@@ -41,7 +41,6 @@ class ProfilePage extends Component {
     }
 
     componentDidMount() {
-        console.log(JSON.parse(sessionStorage.getItem('auth')))
         fetch('image/all')
         .then( result => result.json())
         .then( data => {
@@ -55,6 +54,7 @@ class ProfilePage extends Component {
     // Handles input box updates in child forms
     handleChange(event) {
         this.setState({[event.target.name]: event.target.value})
+        
     }
 
     renderModal() {

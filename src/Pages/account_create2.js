@@ -11,7 +11,7 @@ class AccountCreationPage2 extends Component {
             categories: []
         }
         this.set = new Set()
-        this.account_id = 3 //this.props.history.location.account_id
+        this.account_id = this.props.history.location.account_id
     }
 
     componentDidMount() {
@@ -32,7 +32,6 @@ class AccountCreationPage2 extends Component {
             alert("Account Creation Complete!")
         } else {
             const categoryList = this.filterOutUnSelectedCategories()
-            console.log(categoryList)
             try {
                 const response = await this.sendSelectedCategoriesToServer(categoryList)
                 if( response.status !== 200) {
@@ -49,7 +48,6 @@ class AccountCreationPage2 extends Component {
     }
 
     sendSelectedCategoriesToServer(body) {
-        console.log(JSON.stringify(body))
         const url = `account/addCategories?id=${this.account_id}`
         return fetch(url, {
             method: 'POST',
