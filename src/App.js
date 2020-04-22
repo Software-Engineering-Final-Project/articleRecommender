@@ -1,5 +1,5 @@
 import React, {Component } from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Home from "./Pages/home"
 import AboutPage from './Pages/about'
 import PageNotFound from "./Pages/pageNotFound"
@@ -46,9 +46,9 @@ class App extends Component {
   }
   render() {
     return (
-      <Router>
+      <BrowserRouter>
         <AppWithRouterAccess/>
-      </Router>
+      </BrowserRouter>
     );
   }
 
