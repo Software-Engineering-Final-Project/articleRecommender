@@ -1,5 +1,5 @@
 import React, {Component } from 'react'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Home from "./Pages/home"
 import AboutPage from './Pages/about'
 import PageNotFound from "./Pages/pageNotFound"
@@ -10,6 +10,7 @@ import AccountCreationPage1 from './Pages/account_create'
 import AccountCreationPage2 from './Pages/account_create2'
 import SearchResultPage from './Pages/search_results'
 import StarredTopicsPage from './Pages/starred_topics'
+import AppWithRouterAccess from './Okta/AppWithRouterAccess';
 
 /**
  * This Class handles the routing for the website. It uses react-router-dom for routing
@@ -43,24 +44,36 @@ class App extends Component {
       })
     }
   }
-
   render() {
     return (
-      <BrowserRouter>
-        <Switch>
-          <Route exact path='/' render={ (props) => <Home {...props} handler={this.updateStateLogin}/> } />
-          <Route path='/createAccount' component={AccountCreationPage1} />
-          <Route path='/createAccount2' component={AccountCreationPage2}/>
-          <Route path='/about' component={AboutPage} />
-          <Route path='/results' component={SearchResultPage} />
-          <Route path='/favorites' component={StarredTopicsPage}/>
-          <ProtectedRoute path='/search' component={SearchHomePage} state={this.state} />
-          <ProtectedRoute path='/profile' component={ProfilePage} state={this.state} />          
-          <Route component={PageNotFound}/>
-        </Switch>
-      </BrowserRouter>
-    )
+      <Router>
+        <AppWithRouterAccess/>
+      </Router>
+    );
   }
+
+  // render() {
+  //   return (
+  //     <BrowserRouter>
+  //       <Switch>
+  //         <Route exact path='/' render={ (props) => <Home {...props} handler={this.updateStateLogin}/> } />
+  //         <Route path='/createAccount' component={AccountCreationPage1} />
+  //         <Route path='/createAccount2' component={AccountCreationPage2}/>
+  //         <Route path='/about' component={AboutPage} />
+  //         <Route path='/results' component={SearchResultPage} />
+  //         <Route path='/favorites' component={StarredTopicsPage}/>
+  //         <ProtectedRoute path='/search' component={SearchHomePage} state={this.state} />
+  //         <ProtectedRoute path='/profile' component={ProfilePage} state={this.state} />          
+  //         <Route component={PageNotFound}/>
+  //       </Switch>
+  //     </BrowserRouter>
+  //   )
+  // }
 }
 
 export default App;
+
+
+
+
+
