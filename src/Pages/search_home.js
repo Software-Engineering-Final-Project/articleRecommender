@@ -1,15 +1,82 @@
 import React, { Component, Fragment } from 'react'
 import Navbar from '../Components/navbar'
 import SearchBar from '../Components/searchBar'
+import SearchResult from '../Components/search_result'
+import ArticleModal from '../Components/Modals/article_modal'
+
 
 class HomeSearch extends Component {
 
     constructor(props) {
         super(props)
+
+        this.state = {
+            results: [],
+            showModal: false,
+            modalData: {},
+        }
+
         const { account, sessionKey } = JSON.parse(sessionStorage.getItem('auth'))
         this.sessionKey = sessionKey
         this.user = account
         this.image = "data:image/png;base64," + this.user.image
+
+        
+        this.componentDidMount = this.componentDidMount.bind(this)
+        this.addArticle = this.addArticle.bind(this)
+        this.showModal = this.showModal.bind(this)
+        this.closeModal = this.closeModal.bind(this)
+    }
+
+    componentDidMount() {
+        fetch('/article/searchArticle?id=10')
+        .then(response => response.json())
+        .then(data => this.setState({results: data}))
+    }
+
+    addArticle(id) {
+        fetch(`/article/searchArticle?id=${id}`)
+        .then(response => response.json())
+        .then(data => {
+            const filtered_content = data.filter( ele => {
+                for (let i = 0; i < this.state.results.length; i++) {
+                    if (ele.id === this.state.results[i].id) {
+                        console.log("Got one")
+                        return false
+                    }
+                }
+                return true
+            })
+            this.setState({results: this.state.results.concat(filtered_content)})
+        })
+    }
+
+    closeModal(){
+        this.setState({ showModal: false })
+    }
+
+    showModal(id) {
+        //console.log(id)
+        for(let i = 0; i < this.state.results.length; i++) {
+            if(id === this.state.results[i].id) {
+                this.setState({modalData: this.state.results[i] ,showModal: true})
+            }
+        }
+    }
+
+    renderModal(data) {
+        if (this.state.showModal === false) {
+            return null;
+        } else {
+            return(
+                <ArticleModal 
+                    showModal = { this.state.showModal }
+                    modalTitle = "Article"
+                    closeModal = { () => this.closeModal() }
+                    data = {this.state.modalData}
+                /> 
+            )
+        }
     }
 
     render() {
@@ -30,16 +97,27 @@ class HomeSearch extends Component {
                     </div>
                 </div>
             </div>
-            <div className='container-fluid' style={{'width':'50%'}}>
-                <div className='col justify-content-center mb-3 text-center col-form-label-lg'>
-            
-                    <form>
-                        <SearchBar />
-                        <small id="searchHelp" className="form-text text-muted">Your searches are based on your preferences. See profile for more information.</small>
-                    </form>
-                </div>
+            <div className='row justify-content-center'>
+            <p style={{'fontSize':'30px', 'color':'#60b0f4'}}>Recommended Articles</p>
+            </div>
+            <div className='container-fluid mb-5' style={{'width':'50%'}}>
+                {
+                    this.state.results.map( (result, key) => {
+                        return(
+                            <div className='row' key={key}>
+                            <SearchResult 
+                                id = {result.id}
+                                title = {result.article_title}
+                                author = {result.authors}
+                                onClick = {this.addArticle}
+                                onClick2 = {this.showModal}
+                        />
+                        </div>)
+                    })
+                }
             </div>
         </div>
+        { this.renderModal() }
         </div>
         </Fragment>  
         )

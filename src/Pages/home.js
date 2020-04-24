@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react"
 import Login from '../Components/form_login'
-import logo from '../Images/LogoDesign3.jpg'
+import logo from '../Images/Logo.PNG'
 import CreateAccountRedirect from '../Components/account_create_link'
 import Footer from '../Components/footer_contact'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

@@ -1,0 +1,43 @@
+import React, { useState } from 'react'
+
+/** A Modal to display all images Requires the following props:
+ * @param { boolean } showModal: True if the modal should be displayed
+ * @param { string } modalTitle: The title of the modal
+ * @param { callback } closeModal: A function that determines what happens after the modal is closed
+ */
+function ArticleModal(props) {
+
+    const images = props.images
+    const [selected, changeSelected] = useState(props.default)
+
+    console.log(props.data)
+
+
+
+    console.log(props.data.article_desc)
+
+    return(
+        <div className={`modal ${props.showModal ? 'show' : ''}`}
+             style={{display: `${props.showModal ? 'block' : 'none'}`, backgroundColor: 'rgb(0,0,0,.8)', 'overflowY':'auto', 'maxHeight':'100vh'}}
+             tabIndex="-1" 
+             role="dialog" 
+             aria-label="exampleModalLabel"
+             aria-hidden="true">
+            <div className="modal-dialog modal-dialog-centered modal-xl" role="document">
+                <div className="modal-content">
+                    <div className="modal-header" id='blue-modal-header'>
+                        <h4 className="modal-title" id="exampleModalLabel">{props.data.article_title}</h4>
+                        <button type="button" className="close" onClick={() => props.closeModal() } aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div className="modal-body">
+                       <p>{props.data.article_desc}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+export default ArticleModal
