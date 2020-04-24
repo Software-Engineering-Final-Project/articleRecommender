@@ -77,19 +77,18 @@ function AboutContainer() {
                 <div className='row d-flex justify-content-center'>
                     <div className='m-2'>
                         <StaffInfoCard
-                            image ={Yoda3}
-                            full_name = "Melk Daly"
-                            bio = "Seton Hall student who likes thinking about the big picture."
-                            link ="https://github.com/melkdelly"
-                        />
-                    </div>
-                    
-                    <div className='m-2'>
-                        <StaffInfoCard
                             image ={Thor}
                             full_name = "Sachin Mahashabde"
                             bio = "A man who truly believes in the super powers of recursion. Imperative coding is for losers"
                             link ="https://github.com/sachinmahashabde"
+                        />
+                    </div>
+                    <div className='m-2'>
+                        <StaffInfoCard
+                            image ={Yoda3}
+                            full_name = "Melk Daly"
+                            bio = "Seton Hall student who likes thinking about the big picture."
+                            link ="https://github.com/melkdelly"
                         />
                     </div>
 

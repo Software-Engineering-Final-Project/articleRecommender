@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react"
 import Login from '../Components/form_login'
-import logo from '../Images/Logo.PNG'
+import logo from '../Images/LogoDesign3.jpg'
 import CreateAccountRedirect from '../Components/account_create_link'
 import Footer from '../Components/footer_contact'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -100,7 +100,7 @@ class Home extends Component {
         return (
             <Fragment>
             <div className='container-fluid'>
-                <div className='d-flex justify-content-center'>
+                <div className='d-flex justify-content-center mt-5 mb-5'>
                     <img src={logo} className="img-fluid" alt="Responsive"/>
                 </div>
                 <div className="flex-row justify-content-center"> 
