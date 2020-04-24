@@ -11,7 +11,7 @@ class AccountCreationPage2 extends Component {
             categories: []
         }
         this.set = new Set()
-        this.account_id = 3 //this.props.history.location.account_id
+        this.account_id = this.props.history.location.account_id
     }
 
     componentDidMount() {
