@@ -35,13 +35,13 @@ class HomeSearch extends Component {
     }
 
     addArticle(id) {
+        console.log(`The id is: ${id}`)
         fetch(`/article/searchArticle?id=${id}`)
         .then(response => response.json())
         .then(data => {
             const filtered_content = data.filter( ele => {
                 for (let i = 0; i < this.state.results.length; i++) {
                     if (ele.id === this.state.results[i].id) {
-                        console.log("Got one")
                         return false
                     }
                 }
