@@ -1,73 +1,55 @@
+// // src/Login.js
 
-import React, { Component } from 'react';
-import OktaAuth from '@okta/okta-auth-js';
-import { withOktaAuth } from '@okta/okta-react';
+// import React, { Component } from 'react';
+// import { Redirect } from 'react-router-dom';
+// import OktaSignInWidget from './OktaSignInWidget';
+// import { withAuth } from '@okta/okta-react';
 
-export default withOktaAuth(class LoginForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      sessionToken: null,
-      username: '',
-      password: ''
-    };
+// export default withAuth(class Login extends Component {
+//   constructor(props) {
+//     super(props);
+//     this.onSuccess = this.onSuccess.bind(this);
+//     this.onError = this.onError.bind(this);
+//     this.state = {
+//       authenticated: null
+//     };
+//     this.checkAuthentication();
+//   }
 
-    this.oktaAuth = new OktaAuth({ issuer: props.issuer });
+//   async checkAuthentication() {
+//     const authenticated = await this.props.auth.isAuthenticated();
+//     if (authenticated !== this.state.authenticated) {
+//       this.setState({ authenticated });
+//     }
+//   }
 
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleUsernameChange = this.handleUsernameChange.bind(this);
-    this.handlePasswordChange = this.handlePasswordChange.bind(this);
-  }
+//   componentDidUpdate() {
+//     this.checkAuthentication();
+//   }
 
-  handleSubmit(e) {
-    e.preventDefault();
-    this.oktaAuth.signIn({
-      username: this.state.username,
-      password: this.state.password
-    })
-    .then(res => {
-      const sessionToken = res.sessionToken;
-      this.setState(
-        { sessionToken },
-        // sessionToken is a one-use token, so make sure this is only called once
-        () => this.props.authService.redirect({sessionToken})
-      );
-    })
-    .catch(err => console.log('Found an error', err));
-  }
+//   onSuccess(res) {
+//     if (res.status === 'SUCCESS') {
+//       return this.props.auth.redirect({
+//         sessionToken: res.session.token
+//       });
+//    } else {
+//     // The user can be in another authentication state that requires further action.
+//     // For more information about these states, see:
+//     //   https://github.com/okta/okta-signin-widget#rendereloptions-success-error
+//     }
+//   }
 
-  handleUsernameChange(e) {
-    this.setState({username: e.target.value});
-  }
+//   onError(err) {
+//     console.log('error logging in', err);
+//   }
 
-  handlePasswordChange(e) {
-    this.setState({password: e.target.value});
-  }
-
-  render() {
-    if (this.state.sessionToken) {
-      // Hide form while sessionToken is converted into id/access tokens
-      return null;
-    }
-
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Username:
-          <input
-            id="username" type="text"
-            value={this.state.username}
-            onChange={this.handleUsernameChange} />
-        </label>
-        <label>
-          Password:
-          <input
-            id="password" type="password"
-            value={this.state.password}
-            onChange={this.handlePasswordChange} />
-        </label>
-        <input id="submit" type="submit" value="Submit" />
-      </form>
-    );
-  }
-});
+//   render() {
+//     if (this.state.authenticated === null) return null;
+//     return this.state.authenticated ?
+//       <Redirect to={{ pathname: '/' }}/> :
+//       <OktaSignInWidget
+//         baseUrl={this.props.baseUrl}
+//         onSuccess={this.onSuccess}
+//         onError={this.onError}/>;
+//   }
+// });
