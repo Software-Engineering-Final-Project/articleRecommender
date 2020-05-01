@@ -2,7 +2,7 @@
     background: transparent;
     outline: none;
     border: none;
-    color: #d8bd27;
+    color: #FFF200;
 }
 
 .starSelected:focus {
@@ -25,13 +25,13 @@
 }
 
 .starUnselected:hover {
-    color: #d8bd27;
+    color: #FFF200;
 }
 
 .categoryDiv {
     outline: none;
     border-style: solid;
     border-radius: 10px;
-    border-color: #959595;
+    border-color: #2E3192;
     border-width: 1px;
 }

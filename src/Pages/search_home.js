@@ -90,7 +90,7 @@ class HomeSearch extends Component {
         <div className='vertical-center2'>
         <div className='container-fluid'>
             <div className='row justify-content-center'>
-                <div className="jumbotron jumbotron-fluid" style={{'backgroundColor':'white'}}>
+                <div className="jumbotron" style={{'backgroundColor':'white'}}>
                     <div className="container">
                         <h1 className="display-4 text-center">Autism Searches</h1>
                         <p className="lead text-center text-muted">A modern article recommender for ASD related topics.</p>

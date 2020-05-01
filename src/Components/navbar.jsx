@@ -95,7 +95,7 @@ function LogoutButton(props) {
             {signOutIcon}
     </button>
     )
-
+    
 }
 
 
