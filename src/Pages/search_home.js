@@ -88,17 +88,20 @@ class HomeSearch extends Component {
         />
 
         <div className='vertical-center2'>
-        <div className='container'>
+        <div className='container-fluid'>
             <div className='row justify-content-center'>
                 <div className="jumbotron jumbotron-fluid" style={{'backgroundColor':'white'}}>
                     <div className="container">
                         <h1 className="display-4 text-center">Autism Searches</h1>
-                        <p className="lead text-center">A modern search browser for ASD related topics.</p>
+                        <p className="lead text-center text-muted">A modern article recommender for ASD related topics.</p>
                     </div>
                 </div>
             </div>
-            <div className='row justify-content-center'>
-            <p style={{'fontSize':'30px', 'color':'#60b0f4'}}>Recommended Articles</p>
+            <div className='row justify-content-center' style={{'margin':'0px', 'padding':'0px'}}>
+                <p style={{'fontSize':'30px', 'color':'#2E3192'}}>Recommended articles for you</p>
+            </div>
+            <div className='row justify-content-center' style={{'margin':'0px', 'padding':'0px'}}>
+                <p className='text-muted'> Recommendations are based off of your preferred topics</p>
             </div>
             <div className='container-fluid mb-5' style={{'width':'50%'}}>
                 {

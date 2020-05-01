@@ -17,7 +17,7 @@ class Navbar extends Component {
                 <div className="collapse" id="navbarToggleExternalContent">
                     <div className="bg-dark p-4">
                         <h4 className="text-white">Autism Searches</h4>
-                        <span className="text-muted">A modern search browser for ASD related topics.</span>
+                        <span className="text-muted">A modern article recommender for ASD related topics.</span>
                         <ul className="navbar-nav mr-auto">
                         <ListItem
                             text="Home"
@@ -39,7 +39,7 @@ class Navbar extends Component {
                         </ul>
                     </div>
                 </div>
-                <nav className="navbar navbar-dark" style={{'backgroundColor': '#60b0f4'}}>
+                <nav className="navbar navbar-dark" style={{'backgroundColor': '#2E3192'}}>
                     <NavPullDown />
                     <a 
                         className="navbar-brand" 

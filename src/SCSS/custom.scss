@@ -1,0 +1,15 @@
+
+/* custom.css
+ * This file holds custom Bootstrap scss for the App to use.
+*/
+
+
+// Add new theme colors
+$theme-colors: (
+  "logo-blue": #2E3192,
+  "logo-yellow": #FFF200
+);
+
+
+// Import Bootstrap and its default variables
+@import '~bootstrap/scss/bootstrap.scss'

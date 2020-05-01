@@ -1,7 +1,7 @@
 import React from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import '../CSS/search.css'
-import ArticleModal from '../Components/Modals/article_modal'
+import ArticleModal from './Modals/article_modal'
 
 
 /**
@@ -28,14 +28,14 @@ function SearchResult(props) {
                 <button 
                     type="button" 
                     onClick={() => props.onClick(props.id)} 
-                    className={`btn btn-outline-success btn-small`}>{addIcon}
+                    className={`btn btn-outline-success btn-sm`}>{addIcon}
                 </button>
                 </div>
                 <div className='flex-col-6'>
                 <button 
                     type="button" 
                     onClick={() => props.onClick2(props.id)} 
-                    className={`btn btn-outline-secondary btn-small`}>More Info
+                    className={`btn btn-outline-secondary btn-sm`}>More Info
                 </button>
                 </div>
                 </div>
