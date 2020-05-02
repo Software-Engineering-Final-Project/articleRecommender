@@ -1,4 +1,4 @@
-# Front End
+# Autism Searches Front End
 To view other parts of the project click the links below
 - [Back End](https://github.com/Software-Engineering-Final-Project/articleFetch)
 - [Machine Learning](https://github.com/Software-Engineering-Final-Project/BackEndML)
