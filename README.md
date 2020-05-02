@@ -14,3 +14,5 @@ This Project road map below:
 - [x] Have a view that allows a user to manage their favorites 
 - [x] Hook up search bar to backend
 - [x] Allow user to decide if they would like to save or see more of a specified article type
+
+### For a detailed overview of the project, visit this project's main [README](https://github.com/Software-Engineering-Final-Project/articleFetch)
