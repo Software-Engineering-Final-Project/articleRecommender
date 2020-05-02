@@ -4,7 +4,7 @@ To view other parts of the project click the links below
 - [Machine Learning](https://github.com/Software-Engineering-Final-Project/BackEndML)
 
 ### Brief Overview
-This project is the front-end application for our final project. Its main purpose is the give the user a clean GUI so that they can easily login and search for articles.
+This project is the front end application for our final project. Its main purpose is the give the user a clean GUI so that they can easily login and search for articles.
 
 This Project road map below:
 - [x] Have a login screen 
