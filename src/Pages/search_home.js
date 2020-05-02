@@ -15,6 +15,7 @@ class HomeSearch extends Component {
             showModal: false,
             modalData: {},
         }
+        
         const { account, sessionKey } = JSON.parse(sessionStorage.getItem('auth'))
         this.sessionKey = sessionKey
         this.user = account
