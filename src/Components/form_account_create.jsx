@@ -3,10 +3,6 @@ import '../CSS/input.css'
 
 class AccountForm extends Component {
 
-    constructor(props) {
-        super(props)
-    }
-
     // Renders a message if any errors have ocurred
     renderMessage() {
         return <p 

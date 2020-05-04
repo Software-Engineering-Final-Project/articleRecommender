@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 /** A Modal to display all images Requires the following props:
  * @param { boolean } showModal: True if the modal should be displayed
@@ -6,16 +6,6 @@ import React, { useState } from 'react'
  * @param { callback } closeModal: A function that determines what happens after the modal is closed
  */
 function ArticleModal(props) {
-
-    const images = props.images
-    const [selected, changeSelected] = useState(props.default)
-
-    console.log(props.data)
-
-
-
-    console.log(props.data.article_desc)
-
     return(
         <div className={`modal ${props.showModal ? 'show' : ''}`}
              style={{display: `${props.showModal ? 'block' : 'none'}`, backgroundColor: 'rgb(0,0,0,.8)', 'overflowY':'auto', 'maxHeight':'100vh'}}

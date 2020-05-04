@@ -40,7 +40,8 @@ class StarredTopics extends Component {
                 category.status = true
                 return category
             })
-            this.setState({favCatagories: newData})
+            const sortedData = newData.sort((a, b) => a.name > b.name ? 1 : -1)
+            this.setState({favCatagories: sortedData})
         })
     }
 
@@ -52,9 +53,14 @@ class StarredTopics extends Component {
                     modalTitle = "Add Categories"
                     closeModal = { () => this.closeModal() }
                     categories = { this.state.favCatagories }
+                    onSubmit = { (data) => this.add_categories(data) }
                 />
             )
         }
+    }
+
+    showModal() {
+        this.setState({ showModal: !this.state.showModal })
     }
 
     closeModal(){
@@ -79,6 +85,20 @@ class StarredTopics extends Component {
         }
     }
 
+    async add_categories(categories) {
+        const reduced_cats = categories.map( cat => {
+            delete cat.selected
+            return cat
+        })
+
+        console.log(this.user)
+        const response = await this.postServerFetch(`account/addCategories?id=${this.user.id}`, reduced_cats)
+        if (response.status !== 200) {
+            alert("Error sending data to server. Please try again later")
+        } else {
+            window.location.reload()
+        }
+    }
 
     postServerFetch(url, body) {
         return fetch(url, {
@@ -141,7 +161,7 @@ class StarredTopics extends Component {
                         <div className='col-1 justify-content-end'>
                             <button 
                                 type="button" 
-                                onClick={() => console.log("Pressed")} 
+                                onClick={() => this.showModal()} 
                                 className={`btn btn-outline-success btn-small`}>{this.addIcon}
                             </button>
                         </div>
@@ -172,6 +192,7 @@ class StarredTopics extends Component {
                        
                     </div>
                 </div>
+                { this.renderModal() }
             </Fragment>
         )
     }

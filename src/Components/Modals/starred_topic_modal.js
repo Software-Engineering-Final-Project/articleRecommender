@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import CategoryComponent from '../category_view'
 
 
 /** A Modal to display all images Requires the following props:
@@ -8,8 +9,21 @@ import React, { useState } from 'react'
  * @param { callback (x) } onSubmit: A function with one parameter that determines what happens on form submission
  * @param { [categories] } categories: A array of starred categories
  */
-async function StarredTopicModal(props) {
-    const categories = await filterOutCategories(props.categories)
+function StarredTopicModal(props) {
+    const [categories, setCats] = useState([])     
+    useEffect( () => {
+        async function fetchData() {
+            const data = await filterOutCategories(props.categories)
+            setCats(data)
+        }
+        fetchData()
+    }, [])
+   
+    function selectOrDeselect(index){
+        let temp = [...categories]
+        temp[index].selected= !temp[index].selected
+        setCats(temp)
+    }
 
     return(
         <div className={`modal ${props.showModal ? 'show' : ''}`}
@@ -18,7 +32,7 @@ async function StarredTopicModal(props) {
             role="dialog" 
             aria-label="exampleModalLabel"
             aria-hidden="true">
-            <div className="modal-dialog modal-dialog-centered modal-xl" role="document">
+            <div className="modal-dialog modal-dialog-centered modal-lg" role="document">
                 <div className="modal-content">
                     <div className="modal-header" id='blue-modal-header'>
                         <h4 className="modal-title" id="exampleModalLabel">{props.modalTitle}</h4>
@@ -26,12 +40,32 @@ async function StarredTopicModal(props) {
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div className="modal-body">
+                    <div className="modal-body justify-content-center">
                        {
                            categories.map( (cat, index) => {
-                               return <p key={index}>{cat.name}</p>
-                           })
+                                return(
+                                    <div className='row justify-content-center' key={index}>
+                                        <CategoryComponent 
+                                            name = { cat.name }
+                                            description = { cat.description }
+                                            selected = { cat.selected }
+                                            index = { index }
+                                            onChange = { (index) => selectOrDeselect(index) }
+                                        />
+                                    </div>
+                                )
+                            })
                        }
+                        <div className='row justify-content-center mt-3'>
+                            <button 
+                                type="Add" 
+                                onClick={() => {
+                                    let starred_cats = categories.filter(cat => cat.selected)
+                                    props.onSubmit(starred_cats)
+                                }} 
+                                className={`btn btn-outline-success`}>More Info
+                            </button>
+                        </div>
                     </div>
                 </div>
         </div>
@@ -39,24 +73,22 @@ async function StarredTopicModal(props) {
     )
 }
 
-
 async function fetchCategoriesFromServer() {
     return fetch('category/allCategories')
         .then( result => result.json())
-        .then(data => {
-            this.setState({
-                categories: data
-            })
-        })
-    .catch(error => alert("Error connecting to the database. Please try again later"))
+        .then(data => data.map(ele => {
+                ele.selected = false
+                return ele
+        }))
+        .catch(error => alert("Error connecting to the database. Please try again later"))
 }
 
 // Filter out the categories that are already starred
-async function filterOutCategories(starred_categories) {
+async function filterOutCategories(selected_categories) {
     const categories = await fetchCategoriesFromServer()
     return categories.filter( cat => {
-        for (let c in starred_categories) {
-            if(c.name === cat.name){
+        for (let c of selected_categories) {
+            if(c.id === cat.id || c.name === cat.name){
                 return false
             }
         }

@@ -1,7 +1,6 @@
 import React from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import '../CSS/search.css'
-import ArticleModal from './Modals/article_modal'
 
 
 /**

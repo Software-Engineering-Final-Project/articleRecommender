@@ -26,7 +26,7 @@ class Navbar extends Component {
                         />
 
                         <ListItem
-                            text="Starred Topics and Articles"
+                            text="Favorites"
                             path='/favorites'
                             history= {this.props.history}
                         />

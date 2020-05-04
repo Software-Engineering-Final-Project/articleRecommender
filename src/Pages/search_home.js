@@ -1,9 +1,8 @@
 import React, { Component, Fragment } from 'react'
 import Navbar from '../Components/navbar'
-import SearchBar from '../Components/searchBar'
 import {SearchResult, SubSearchResult} from '../Components/search_result'
 import ArticleModal from '../Components/Modals/article_modal'
-
+import "../CSS/search_result.css"
 
 class HomeSearch extends Component {
 
@@ -87,7 +86,7 @@ class HomeSearch extends Component {
 
     getParentIndex(id) {
         for (let i = 0; i < this.state.results.length; i++) {
-            if (this.state.results[i].id == id) {
+            if (this.state.results[i].id === id) {
                 return i
             }
         }
@@ -97,7 +96,7 @@ class HomeSearch extends Component {
     getArticle(id) {
         for (let i = 0; i < this.state.results.length; i++) {
             const current = this.state.results[i]
-            if (current.id == id) {
+            if (current.id === id) {
                 return i
             }
         }
@@ -175,19 +174,22 @@ class HomeSearch extends Component {
                                     onClick = {this.addArticle}
                                     onClick2 = {this.showModal}
                                 />
-                                {
-                                    result.sub.map( (result2, key) => {
-                                        return(<div className='row ml-5' key={key}>
-                                        <SubSearchResult 
-                                            parent_id = {result.id}
-                                            sub_id = {result2.id}
-                                            title = {result2.article_title}
-                                            author = {result2.authors}
-                                            onClick = {this.addSubArticle}
-                                            onClick2 = {this.showModal}
-                                        />
-                                        </div>)
-                                    })
+                                { <div className='container'>
+                                    {
+                                        result.sub.map( (result2, key) => {
+                                            return(<div className='row mx-auto fade_in' style={{'width':'500px'}} key={key}>
+                                                <SubSearchResult 
+                                                    parent_id = {result.id}
+                                                    sub_id = {result2.id}
+                                                    title = {result2.article_title}
+                                                    author = {result2.authors}
+                                                    onClick = {this.addSubArticle}
+                                                    onClick2 = {this.showModal}
+                                                />
+                                            </div>)
+                                        })
+                                    }
+                                    </div>
                                 }
                         </div>)
                     })
