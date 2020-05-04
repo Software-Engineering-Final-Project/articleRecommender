@@ -22,7 +22,12 @@ function ArticleModal(props) {
                         </button>
                     </div>
                     <div className="modal-body">
-                       <p>{props.data.article_desc}</p>
+                        <div className='row m-2'>
+                            <p>{props.data.article_desc}</p>
+                        </div>
+                        <div className='row m-2'>
+                            <a href={props.data.url}>Link to Article</a>
+                        </div>
                     </div>
                 </div>
             </div>
